@@ -13,9 +13,9 @@
         This the feed page
     </h1>
     <h2>
-        TESTING id: <?= $_SESSION['id'] ?>
+        TESTING id: <?= htmlspecialchars($_SESSION['id']) ?>
     </h2>
-    <h2>TESTING username: <?= $_SESSION['username'] ?></h2>
+    <h2>TESTING username: <?= htmlspecialchars($_SESSION['username']) ?></h2>
     <div class="addPostButton">
         <a href="./index.php?action=newPostForm"><button type="button">+ Add Post</button></a>
     </div>

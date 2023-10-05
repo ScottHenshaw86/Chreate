@@ -1,6 +1,5 @@
 <?php
-// session_start();
-
+session_start();
 
 require_once "./controller/controller.php";
 
@@ -13,11 +12,11 @@ try {
             break;
 
         case "checkSignIn":
-            $username = htmlspecialchars($_REQUEST['username']);
-            $password = htmlspecialchars($_REQUEST['password']);
+            $usernameOrEmail = $_REQUEST['usernameOrEmail'];
+            $password = $_REQUEST['password'];
 
-            if ($username and $password) {
-                getSignIn($username, $password);
+            if ($usernameOrEmail and $password) {
+                getSignIn($usernameOrEmail, $password);
             } else {
                 throw new Exception("Missing required parameters.");
             }
@@ -28,12 +27,16 @@ try {
             break;
 
         case "newPostForm":
-            newPostForm();
+            if (isset($_SESSION['id'])) {
+                newPostForm();
+            } else {
+                showSignInForm();
+            }
             break;
 
         case "createPost":
-            $caption = htmlspecialchars($_REQUEST['caption']);
-            $media_src = htmlspecialchars($_REQUEST['media']);
+            $caption = $_REQUEST['caption'];
+            $media_src = $_REQUEST['media'];
             createPost($caption, $media_src);
             break;
 
@@ -42,15 +45,13 @@ try {
             break;
 
         case "signup":
-            // VALIDATION
+            $username = $_REQUEST['username'];
+            $email = $_REQUEST['email'];
+            $password = $_REQUEST['password'];
+            $passwordConfirm = $_REQUEST['passwordConfirm'];
 
-            $username = htmlspecialchars($_REQUEST['username']);
-            $email = htmlspecialchars($_REQUEST['email']);
-            $password = htmlspecialchars($_REQUEST['password']);
-            $passwordConfirm = htmlspecialchars($_REQUEST['passwordConfirm']);
-
-            $profileImg = htmlspecialchars($_REQUEST['profileImg']);
-            $bio = htmlspecialchars($_REQUEST['bio']);
+            $profileImg = $_REQUEST['profileImg'];
+            $bio = $_REQUEST['bio'];
 
             $tandc = false;
             if (isset($_REQUEST['tandc']) and $_REQUEST['tandc'] == true) {
@@ -108,11 +109,41 @@ try {
             } else {
                 throw new Exception("Invalid profile image.");
             }
+
             if ($usernameValid and $emailValid and $passwordValid and $passwordConfirmValid and $profileImgValid and $bioValid and $tandc and $ageConfirm) {
                 createNewUser($username, $email, $password, $profileImg, $bio);
             } else {
                 throw new Exception("Missing required parameters.");
             }
+            break;
+
+        case "explore":
+            if (isset($_SESSION['id'])) {
+                showExplorePage();
+            } else {
+                showSignInForm();
+            }
+            break;
+
+        case "viewProfile":
+            if (isset($_SESSION['id'])) {
+                showProfile();
+            } else {
+                showSignInForm();
+            }
+            break;
+
+        case "editProfileForm":
+            editProfileForm();
+            break;
+
+        case "editProfile":
+            $username = $_REQUEST['username'];
+            $profileImg = $_REQUEST['profileImg'];
+            $email = $_REQUEST['email'];
+            $password = $_REQUEST['password'];
+            $bio = $_REQUEST['bio'];
+            editProfile($id, $username, $profileImg, $bio, $email, $password);
             break;
 
         default:
