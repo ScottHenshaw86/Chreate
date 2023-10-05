@@ -52,7 +52,9 @@
 
     <!--------------------------------------- CHALLENGE OF THE DAY ---------------------------------------->
 
-
+    <div class="challengeButton">
+        <a href="./index.php?action=challenge"><button>Challenge</button></a>
+    </div>
 
 
     <!------------------------------------- FEED SECTION ------------------------------------------------->

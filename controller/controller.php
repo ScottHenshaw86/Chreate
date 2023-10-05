@@ -59,20 +59,28 @@ function showExplorePage()
     include "./view/components/explorePage.php";
 }
 
+function showChallengePage()
+{
+    $challenge = getChallenges();
+    include  "./view/components/challengePageDisplay.php";
+}
+
 function showProfile()
 {
     $profile = getProfile();
-    print_r($profile);
+    $following = getFollowing();
+    print_r($following);
+    $followers = getFollowers();
     $user = $profile->id;
     $posts = getProfilePosts($user);
-    print_r($posts);
+
 
     include "./view/components/profile.php";
 }
 
 function editProfileForm()
 {
-    $profile = getProfile();
+    $user = getProfile();
     include "./view/components/editProfileForm.php";
 }
 
