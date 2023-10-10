@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Poppins:wght@400;500&display=swap');
+
+:root{
+    --bg-color:#1f242d;
+    --second-bg-color: #323946;
+    --text-color: #fff;
+    --main-color:#ee09ee;
+    --second-main-color:#38DD1D;
+    --hover-box-shadow: 0 0 1rem #ee09ee;
+    --gradient-bg-color: linear-gradient(to bottom, #1f242d, #ee09ee);
+    --transition: all .4s ease;
+}
+body{
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+ul{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.header-wrapper header{
+    background: url(/public/images/profilepage/banner.jpg) no-repeat 50% 20% / cover;/*The image is positioned at 50% horizontally and doesn't repeat . The background size is set to 20% of the element's width, and the cover value is used to ensure the background image covers the entire element.*/
+    width: 100%;
+    min-height: calc(100px + 15vw); /* header's height will be 100px,*/
+}
+.header-wrapper .cols-container .left-col{
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    padding: 25px 20px;
+    max-width: 350px;
+}
+.header-wrapper .cols-container .left-col .img-container{
+    position: absolute;
+    top: -50px; /*moves the element 50 pixels above its normal position*/
+    left: 50px;/*moves the element 50 pixels to the right*/
+    transform: translateX(-50%);/* moves the element horizontally to the left by 50%*/
+}  
+.header-wrapper .cols-container .left-col .img-container img{
+    width: 120px;
+    height: 120px;
+    object-fit: cover; /*image covers the entire container / maintaining its aspect ratio*/
+    border-radius: 50%;
+    display: block;
+    box-shadow: 1px 3px 12px;
+    margin-left: 16rem;
+}
+.header-wrapper .cols-container .left-col .img-container span{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    bottom: 3px;
+    right: 10px;
+    border: 2px solid #fff;
+    background: var(--second-main-color);
+}
+.header-wrapper .cols-container .left-col h2{
+    font-weight: 600;
+    margin-top: 60px;
+    margin-bottom: 5px;
+    font-size: 23px;
+}
+.header-wrapper .cols-container .left-col p{
+    font-size: .9rem;
+    margin: 0;
+    color: #323946;
+}
+.header-wrapper .cols-container .left-col .about{
+    position: relative;
+    justify-content: space-between;
+    margin: 35px 0;
+}
+.header-wrapper .cols-container .left-col .about li{
+    display: flex;
+    flex-direction: column;
+    color: var(--second-bg-color);
+    font-size: 1rem;
+
+}
+.header-wrapper .cols-container .left-col .about li span{       
+    font-weight: 900;
+    color: var(--bg-color);
+}
+.header-wrapper .cols-container .left-col .about::about{
+    position: absolute;
+    content: "";
+    bottom: -16px;
+    display: block; /*taking up the full width available within the containing element*/
+    background: #1f242d;
+    width: 100%;
+    height: 1px;
+}
+.header-wrapper .cols-container .content p {
+    font-size: 1rem;
+    line-height: 1.8em;
+    color: var(--bg-color);
+}
+.header-wrapper .cols-container .content ul{
+    gap: 2rem;
+    margin: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.header-wrapper .cols-container .content ul li{
+    font-size: 1.4rem;
+}
+.header-wrapper .cols-container .right-col nav{
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.header-wrapper .cols-container .right-col nav ul{
+    display: flex;
+    gap: 1.7rem;
+    flex-direction: column;
+}
+.header-wrapper .cols-container .right-col nav ul li a{
+    text-transform: uppercase;
+    color: #818181;
+}
+.header-wrapper .cols-container .right-col nav button{
+    background: var(--main-color);
+    color: var(--bg-color);
+    padding: .6rem 1.5rem;
+    box-shadow: var(--hover-box-shadow);
+    font-size: 1rem;
+    border-radius: 3rem;
+    transition: var(--transition);
+    border: none;
+    margin-top: .8rem;
+    cursor: pointer;
+}
+.header-wrapper .cols-container .right-col nav button:hover{
+    box-shadow: none;
+    color: var(--text-color);
+}
+.header-wrapper .cols-container .right-col nav ul li:nth-child(1) a{ /*targeting 1st 'a' tag in li*/
+    color: var(--bg-color);
+    font-weight: 900;
+}
+.header-wrapper .cols-container .right-col .photos{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px,1fr));
+/*auto-fill instructs the browser to automatically generate as many columns as can fit in the available space while maintaining a minimum width of 190 pixels.
+minmax(190px, 1fr) defines the column size range. The column width can vary between a minimum of 190 pixels and a maximum of 1fr (1 fractional unit of available space).*/
+gap: 20px;
+}
+.header-wrapper .cols-container .right-col .photos img{
+    max-width: 100%; /*makes sure that the images wont exceed the width of parent container, */
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* RESPONSIVNESS */
+
+@media(min-width: 868px){
+    .header-wrapper .cols-container{
+        max-width: 1200px; /*Sets the maximum width of .cols-container to 1200 pixels*/
+        margin: 0 auto;/*Centers the container horizontally by setting its left and right margins to auto.*/
+        width: 90%;
+        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 2fr; /*Defines the grid layout with two columns, where the first column takes one fraction of the available space (1fr) and the second column takes two fractions (2fr).*/
+        gap: 50px;
+    }
+    .header-wrapper .cols-container .left-col{
+        padding: 25px 0;
+    }
+    .header-wrapper .cols-container .right-col nav ul{
+        flex-direction: row;
+        gap: 30px;
+    }
+    .header-wrapper .cols-container .right-col .photos{
+        height: 365px;
+        overflow: auto;
+        padding: 0 0 30px;
+    }
+}
+
+@media(min-width: 1017px){
+    .header-wrapper .cols-container .left-col{
+        margin: 0;
+        margin-right: auto;
+    }
+    .header-wrapper .cols-container .right-col nav button{
+        margin-top: 0;
+    }
+}

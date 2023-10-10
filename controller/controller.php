@@ -11,9 +11,10 @@ function showErrorPage($e)
     include "./view/errorPage.php";
 }
 
+//TODO: change this to feed
 function showHomePage()
 {
-    include "./view/indexView.php";
+    include "./view/components/signinDisplay.php";
 }
 
 function showSignInForm()
