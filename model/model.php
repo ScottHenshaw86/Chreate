@@ -68,6 +68,17 @@ function getPosts()
     return $posts;
 }
 
+function getChallenges()
+{
+    $db = dbConnect();
+
+    $response = $db->query("SELECT id, title, description, tag, start_date, stop_date FROM challenges");
+
+    $challenge = $response->fetch(PDO::FETCH_OBJ);
+
+    return $challenge;
+}
+
 function addNewPost($caption, $media_src)
 {
     $db = dbConnect();
@@ -88,10 +99,10 @@ function getProfile()
     $id = 1;
     $db = dbConnect();
     $req = $db->prepare("SELECT 
-                            u.id, u.username, u.bio, u.password, u.profile_img, u.email, u.password, COUNT(f.followee_id) AS following, COUNT(f.follower_id) AS followers 
-                            FROM users u INNER JOIN posts p ON u.id = p.user_id 
-                            INNER JOIN follows f 
-                            ON u.id = f.follower_id 
+                            u.id, u.username, u.bio, u.password, u.profile_img, u.email, u.password  
+                            FROM users u 
+                            INNER JOIN posts p 
+                            ON u.id = p.user_id 
                             WHERE u.id = :id
                             GROUP BY u.id");
 
@@ -103,6 +114,50 @@ function getProfile()
 
     return $profile;
 };
+
+
+
+function getFollowing()
+{
+    $id = 2;
+    $db = dbConnect();
+
+    $req = $db->prepare("SELECT 
+                            u.id, COUNT(f.follower_id) AS following
+                            FROM users u 
+                            INNER JOIN follows f 
+                            ON u.id = f.follower_id 
+                            WHERE u.id = :id
+                            GROUP BY u.id");
+
+    $req->execute([
+        'id' => $id
+    ]);
+
+    $following = $req->fetch(PDO::FETCH_OBJ);
+    return $following;
+}
+
+function getFollowers()
+{
+    $id = 2;
+    $db = dbConnect();
+
+    $req = $db->prepare("SELECT 
+                            u.id, COUNT(f.followee_id) AS followers
+                            FROM users u 
+                            INNER JOIN follows f 
+                            ON u.id = f.followee_id 
+                            WHERE u.id = :id
+                            GROUP BY u.id");
+
+    $req->execute([
+        'id' => $id
+    ]);
+
+    $followers = $req->fetch(PDO::FETCH_OBJ);
+    return $followers;
+}
 
 function getProfilePosts($user)
 {
@@ -128,8 +183,9 @@ function getProfilePosts($user)
 
 function updateProfile($id, $username, $profileImg, $bio, $email, $password)
 {
+
     $db = dbConnect();
-    $req = $db->prepare("UPDATE users SET username = :username, profile_img = :profileImg, bio = :bio, email = :email, password = :password WHERE id = :id )");
+    $req = $db->prepare("UPDATE users SET username = :username, profile_img = :profileImg, bio = :bio, email = :email, password = :password WHERE id = :id ");
     $req->execute([
         'id' => $id,
         'username' => $username,

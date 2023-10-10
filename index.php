@@ -125,6 +125,11 @@ try {
             }
             break;
 
+        case "challenge":
+            showChallengePage();
+            break;
+
+
         case "viewProfile":
             if (isset($_SESSION['id'])) {
                 showProfile();
@@ -138,11 +143,13 @@ try {
             break;
 
         case "editProfile":
+            $id = $_REQUEST['id'];
             $username = $_REQUEST['username'];
             $profileImg = $_REQUEST['profileImg'];
             $email = $_REQUEST['email'];
             $password = $_REQUEST['password'];
             $bio = $_REQUEST['bio'];
+
             editProfile($id, $username, $profileImg, $bio, $email, $password);
             break;
 
