@@ -35,8 +35,8 @@ try {
             break;
 
         case "createPost":
-            $caption = $_REQUEST['caption'];
-            $media_src = $_REQUEST['media'];
+            $caption = $_REQUEST['caption'] ?? null;
+            $media_src = $_REQUEST['media'] ?? null;
             createPost($caption, $media_src);
             break;
 

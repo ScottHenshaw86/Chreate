@@ -16,6 +16,7 @@
     <h2>bio: <?= $profile->bio ?></h2>
     <h2>profile img src: <?= $profile->profile_img ?></h2>
     <h2>username: <?= $profile->username ?></h2>
+
     <h2>follower count: <?= $followers->followers ?></h2>
     <h2>following count: <?= $following->following ?></h2>
     <h2> feed: </h2>
