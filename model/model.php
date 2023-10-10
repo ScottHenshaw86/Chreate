@@ -34,18 +34,16 @@ function checkSignin($usernameOrEmail, $password)
 }
 
 
-function addNewUser($username, $email, $password, $profileImg, $bio)
+function addNewUser($username, $email, $password)
 {
 
     $password = password_hash($password, PASSWORD_DEFAULT);
     $db = dbConnect();
-    $req = $db->prepare("INSERT INTO users (username, email, password, profile_img, bio, is_active) VALUES (:username, :email, :password, :profileImg, :bio, 1)");
+    $req = $db->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
     $req->execute([
         'username' => $username,
         'email' => $email,
         'password' => $password,
-        'profileImg' => $profileImg,
-        'bio' => $bio
     ]);
 }
 

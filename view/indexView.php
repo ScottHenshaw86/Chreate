@@ -27,10 +27,7 @@
     <?php
     } else {
     ?>
-        <a href="index.php?action=signin">
-            <h2> Sign in</h2>
-        </a>
-        <a href="index.php?action=newUser">
+        <a href="index.php?action=showSignUpPage">
             <h2> Sign up</h2>
         </a>
     <?php

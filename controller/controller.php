@@ -20,7 +20,7 @@ function showHomePage()
 
 function showSignInForm()
 {
-    include "./view/components/signinDisplay.php";
+    include "./view/signinDisplay.php";
 }
 
 
@@ -40,12 +40,12 @@ function getSignIn($usernameOrEmail, $password)
 
 function getSignUpForm()
 {
-    include "./view/components/signupDisplay.php";
+    include "./view/signinDisplay.php";
 }
 
-function createNewUser($username, $email, $password, $profileImg, $bio)
+function createNewUser($username, $email, $password)
 {
-    addNewUser($username, $email, $password, $profileImg, $bio);
+    addNewUser($username, $email, $password);
     header("Location: index.php?action=signin");
 }
 
