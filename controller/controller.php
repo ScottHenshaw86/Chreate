@@ -68,13 +68,12 @@ function showProfile()
 {
     $profile = getProfile();
     $following = getFollowing();
-    print_r($following);
+    // print_r($following);
     $followers = getFollowers();
-    $user = $profile->id;
-    $posts = getProfilePosts($user);
+    $posts = getProfilePosts($profile->id);
 
 
-    include "./view/components/profile.php";
+    include "./view/profilePage.php";
 }
 
 function editProfileForm()

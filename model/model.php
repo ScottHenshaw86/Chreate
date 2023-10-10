@@ -94,15 +94,12 @@ function addNewPost($caption, $media_src)
 
 function getProfile()
 {
-    $id = 1;
+    $id = $_SESSION["id"];
     $db = dbConnect();
     $req = $db->prepare("SELECT 
-                            u.id, u.username, u.bio, u.password, u.profile_img, u.email, u.password  
+                            u.id, u.username, u.bio, u.password, u.profile_img, u.email  
                             FROM users u 
-                            INNER JOIN posts p 
-                            ON u.id = p.user_id 
-                            WHERE u.id = :id
-                            GROUP BY u.id");
+                            WHERE u.id = :id");
 
     $req->execute([
         'id' => $id
