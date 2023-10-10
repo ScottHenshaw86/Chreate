@@ -1,9 +1,8 @@
 <?php
-
+// if (session_status() !== PHP_SESSION_ACTIVE) {
+//     session_start();
+// }
 require_once "./model/model.php";
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
 
 
 function showErrorPage($e)
@@ -11,26 +10,31 @@ function showErrorPage($e)
     include "./view/errorPage.php";
 }
 
-//TODO: change this to feed
+
 function showHomePage()
 {
-    include "./view/components/signinDisplay.php";
+    $posts = getPosts();
+    include "./view/indexView.php";
 }
+
 
 function showSignInForm()
 {
     include "./view/components/signinDisplay.php";
 }
 
-function getSignIn($username, $password)
+
+function getSignIn($usernameOrEmail, $password)
 {
-    $user = checkSignIn($username, $password); //TODO: if or throw exception if user doesnt exist
-    $_SESSION['id'] = $user->id;
-    $_SESSION['username'] = $user->username;
+    $user = checkSignIn($usernameOrEmail, $password);
+    if ($user) {
+        $_SESSION['id'] = $user->id;
+        $_SESSION['username'] = $user->username;
 
-
-    // header("Location: index.php?action=feed&id=" . $user->id . '&username=' . $user->username);
-    header("Location: index.php?action=feed");
+        header("Location: index.php?action=feed");
+    } else {
+        throw new Exception("User not found.");
+    }
 }
 
 
@@ -45,6 +49,37 @@ function createNewUser($username, $email, $password, $profileImg, $bio)
     header("Location: index.php?action=signin");
 }
 
+// ==============================================================================//
+// ================================ TODO: PROFILE AND EXPLORE CONTROLLER THINGS ======================//
+
+function showExplorePage()
+{
+    $posts = getPosts();
+    include "./view/components/explorePage.php";
+}
+
+function showProfile()
+{
+    $profile = getProfile();
+    print_r($profile);
+    $user = $profile->id;
+    $posts = getProfilePosts($user);
+    print_r($posts);
+
+    include "./view/components/profile.php";
+}
+
+function editProfileForm()
+{
+    $profile = getProfile();
+    include "./view/components/editProfileForm.php";
+}
+
+function editProfile($id, $username, $profileImg, $bio, $email, $password)
+{
+    updateProfile($id, $username, $profileImg, $bio, $email, $password);
+    header("Location: index.php?action=viewProfile");
+}
 
 // ==============================================================================//
 // ================================ TODO: FEED CONTROLLER THINGS ======================//
@@ -52,7 +87,7 @@ function createNewUser($username, $email, $password, $profileImg, $bio)
 function showFeed()
 {
     $posts = getPosts();
-    include "./view/components/feedDisplay.php";
+    include "./view/indexView.php";
 }
 
 function newPostForm()
