@@ -149,9 +149,15 @@ try {
             editProfile($id, $username, $profileImg, $bio, $email, $password);
             break;
 
+            case "logOut":
+                logOut(); 
+                break;   
+
         default:
             showHomePage();
             break;
+
+
     }
 } catch (Exception $e) {
     showErrorPage($e);
