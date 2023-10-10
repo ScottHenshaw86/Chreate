@@ -59,7 +59,7 @@
         <div class="panel left-panel">
             <div class="content">
                 <h3>Member of Chreate?</h3>
-                <p>WAKE UP JOHNNY IT'S TIME TO TAKE A PISS AND SIGN IN!</p>
+                <p>We are delighted to welcome you to CHREATE. To access your account and explore our services, please provide your credentials below.</p>
                 <button class="btn" id="sign-in-btn">Sign in</button>
             </div>
             <img class="image1 img" src="./public/images/signin.svg" alt="">
@@ -69,7 +69,7 @@
         <div class="panel right-panel">
             <div class="content">
                 <h3>New to Chreate?</h3>
-                <p>STOP SMOKIN CRACK AND SIGN UP JOHNNY!</p>
+                <p>Thank you for choosing CHREATE. We're thrilled to have you on board! To chreate your account and begin your journey with us, please follow the simple steps below:</p>
                 <button class="btn" id="sign-up-btn">Sign up</button>
             </div>
             <img class="image2 img" src="./public/images/signup.svg" alt="">
