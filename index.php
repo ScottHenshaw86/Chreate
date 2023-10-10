@@ -109,7 +109,6 @@ try {
             } else {
                 throw new Exception("Invalid profile image.");
             }
-
             if ($usernameValid and $emailValid and $passwordValid and $passwordConfirmValid and $profileImgValid and $bioValid and $tandc and $ageConfirm) {
                 createNewUser($username, $email, $password, $profileImg, $bio);
             } else {

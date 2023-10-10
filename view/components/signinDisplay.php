@@ -1,27 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signin-signup</title>
+    <!-- CSS link -->
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <!-- JS link -->
+    <script defer src="./public/js/toggleSignInUp.js"></script>
+    <!-- ICONS link -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="container">
+      <!-- SIGN IN -->
+      <div class="signin-signup">
+        <form action="" class="sign-in-form">
+          <h2 class="title">Sign In</h2>
+          <!-- user -->
+          <div class="input-field">
+            <i class="bx bxs-user"></i>
+            <input type="text" placeholder="Username" />
+          </div>
+          <!-- password -->
+          <div class="input-field">
+            <i class="bx bxs-lock"></i>
+            <input type="password" placeholder="Password" />
+          </div>
+          <input type="submit" value="Login" class="btn" />
+        </form>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public\css\signinsignup.css">
-    <!-- <script defer src="./public/js/signUpValidation.js"></script> -->
-    <title>Sign In Page</title>
-</head>
-
-<body>
-    <div class="main">
-        <div class="formContainer">
-            <form action="index.php?action=checkSignIn" method="post">
-                <input type="text" name="usernameOrEmail" id="usernameOrEmail" placeholder="username or email">
-                <!-- TODO: change input type to password -->
-                <input type="text" name="password" id="password" placeholder="password">
-                <button type="submit">Sign in</button>
-
-            </form>
+        <!-- SIGN UP -->
+        <form action="" class="sign-up-form">
+          <h2 class="title">Sign Up</h2>
+          <!-- user -->
+          <div class="input-field">
+            <i class="bx bxs-user"></i>
+            <input type="text" placeholder="Username" />
+          </div>
+          <!-- email -->
+          <div class="input-field">
+            <i class='bx bxs-envelope' ></i>
+            <input type="text" placeholder="email" />
+          </div>
+          <!-- password -->
+          <div class="input-field">
+            <i class="bx bxs-lock"></i>
+            <input type="password" placeholder="Password" />
+          </div>
+          <input type="submit" value="Sign up" class="btn" />
+        </form>
+      </div>
+      <div class="panals-controller">
+        <!-- SIGN IN PANAL -->
+        <div class="panel left-panel">
+            <div class="content">
+                <h3>Member of Chreate?</h3>
+                <p>We are delighted to welcome you to CHREATE. To access your account and explore our services, please provide your credentials below.</p>
+                <button class="btn" id="sign-in-btn">Sign in</button>
+            </div>
+            <img class="image1 img" src="./public/images/signin.svg" alt="">
         </div>
+
+        <!-- SIGN UP PANAL -->
+        <div class="panel right-panel">
+            <div class="content">
+                <h3>New to Chreate?</h3>
+                <p>Thank you for choosing CHREATE. We're thrilled to have you on board! To chreate your account and begin your journey with us, please follow the simple steps below:</p>
+                <button class="btn" id="sign-up-btn">Sign up</button>
+            </div>
+            <img class="image2 img" src="./public/images/signup.svg" alt="">
+        </div>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>

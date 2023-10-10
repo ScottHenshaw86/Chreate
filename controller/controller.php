@@ -43,7 +43,6 @@ function getSignUpForm()
     include "./view/components/signupDisplay.php";
 }
 
-
 function createNewUser($username, $email, $password, $profileImg, $bio)
 {
     addNewUser($username, $email, $password, $profileImg, $bio);
