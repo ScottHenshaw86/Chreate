@@ -102,6 +102,12 @@ function newPostForm()
     include "./view/components/newPostForm.php";
 }
 
+function logOut()
+{
+    session_destroy();
+    header("location: index.php?action=showSignUpPage");    
+}
+
 function createPost($caption, $media_src)
 {
     // VALIDATE AND UPLOAD THE FILE

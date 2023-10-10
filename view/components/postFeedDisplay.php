@@ -1,6 +1,12 @@
 <div class="post">
     <div>challenge: <?= $post->tag ?></div>
 
+    <div class="postdetails">
+        <div class="useronpost"><?= htmlspecialchars($post->username) ?></div>
+        <br>
+        <div class="caption"><?= htmlspecialchars($post->captions) ?></div>
+    </div>
+
     <?php
     $path_parts = pathinfo($post->media_src);
     $extension = $path_parts['extension'];
@@ -13,12 +19,8 @@
             <source src="<?= ($post->media_src) ?>" type="video/<?= $extension ?>" class="postcontent">
         </video> <?php
                 }
-                    ?>
-    <div class="postdetails">
-        <div class="useronpost">user: <?= htmlspecialchars($post->username) ?></div>
-        <div class="caption">caption: <?= htmlspecialchars($post->captions) ?></div>
-        <div class="date">date: <?= htmlspecialchars($post->date_created) ?></div>
-    </div>
+                    ?> 
+                    <div class="date">date: <?= htmlspecialchars($post->date_created) ?></div>   
     <br>
     <br>
 </div>
