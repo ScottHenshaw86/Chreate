@@ -40,7 +40,7 @@ try {
             createPost($caption, $media_src);
             break;
 
-        case "newUser":
+        case "showSignUpPage":
             getSignUpForm();
             break;
 
@@ -49,9 +49,6 @@ try {
             $email = $_REQUEST['email'];
             $password = $_REQUEST['password'];
             $passwordConfirm = $_REQUEST['passwordConfirm'];
-
-            $profileImg = $_REQUEST['profileImg'];
-            $bio = $_REQUEST['bio'];
 
             $tandc = false;
             if (isset($_REQUEST['tandc']) and $_REQUEST['tandc'] == true) {
@@ -96,21 +93,21 @@ try {
                 throw new Exception("Password did not match.");
             }
 
-            $bioValid = false;
-            if (preg_match("/^[a-z0-9!@#$%\^&* ]{10,250}$/i", $bio)) {
-                $bioValid = true;
-            } else {
-                throw new Exception("Invalid bio.");
-            }
+            // $bioValid = false;
+            // if (preg_match("/^[a-z0-9!@#$%\^&* ]{10,250}$/i", $bio)) {
+            //     $bioValid = true;
+            // } else {
+            //     throw new Exception("Invalid bio.");
+            // }
 
-            $profileImgValid = false;
-            if (preg_match("/^[a-z0-9!@#.$%\^&*]{10,250}$/i", $profileImg)) {
-                $profileImgValid = true;
-            } else {
-                throw new Exception("Invalid profile image.");
-            }
-            if ($usernameValid and $emailValid and $passwordValid and $passwordConfirmValid and $profileImgValid and $bioValid and $tandc and $ageConfirm) {
-                createNewUser($username, $email, $password, $profileImg, $bio);
+            // $profileImgValid = false;
+            // if (preg_match("/^[a-z0-9!@#.$%\^&*]{10,250}$/i", $profileImg)) {
+            //     $profileImgValid = true;
+            // } else {
+            //     throw new Exception("Invalid profile image.");
+            // }
+            if ($usernameValid and $emailValid and $passwordValid and $passwordConfirmValid  and $tandc and $ageConfirm) {
+                createNewUser($username, $email, $password);
             } else {
                 throw new Exception("Missing required parameters.");
             }
