@@ -33,44 +33,64 @@
     <?php
     }
     ?>
-
-    <!-------------------------------------- EXPLORE SECTION -------------------------------------------->
+    <!-------------------------------------- HOME/LOGO BUTTON -------------------------------------------->
     <div class="buttons">
-        <div class="exploreButton">
-            <a href="./index.php?action=explore"><button> Explore </button> </a>
+        <div class="logoButton">
+            <a href="./index.php?action=search"><button> Logo/home </button> </a>
         </div>
 
-
-        <!-------------------------------------- PROFILE SECTION --------------------------------------------->
-
-        <div class="profileButton">
-            <a href="./index.php?action=viewProfile"> <button> profile </button> </a>
-        </div>
-
-
-        <!--------------------------------------- CHALLENGE OF THE DAY ---------------------------------------->
-
-    <div class="challengeButton">
-        <a href="./index.php?action=challenge"><button>Challenge</button></a>
-    </div>
+        <!-------------------------------------- SEARCH SECTION -------------------------------------------->
+        <div class="buttons">
+            <div class="searchButton">
+                <a href="./index.php?action=search"><button>Search</button> </a>
+            </div>
 
 
-        <!------------------------------------- FEED SECTION ------------------------------------------------->
+            <!-------------------------------------- EXPLORE SECTION -------------------------------------------->
+            <div class="buttons">
+                <div class="exploreButton">
+                    <a href="./index.php?action=explore"><button> Explore </button> </a>
+                </div>
 
-        <div class="addPostButton">
-            <a href="./index.php?action=newPostForm"><button type="button">+ Add Post</button></a>
-        </div>
-    </div>
 
-    <div class="feedContainer">
-        <?php
-        foreach ($posts as $post) {
+                <!-------------------------------------- PROFILE SECTION --------------------------------------------->
 
-            include "./view/components/postFeedDisplay.php";
-        }
-        ?>
+                <div class="profileButton">
+                    <a href="./index.php?action=viewProfile"> <button>profile</button></a>
+                </div>
 
-    </div>
+
+                <!--------------------------------------- CHALLENGE OF THE DAY ---------------------------------------->
+
+                <div class="challengeButton">
+                    <a href="./index.php?action=challenge"><button>Challenge</button></a>
+                </div>
+
+
+                <!------------------------------------- ADD POST ------------------------------------------------->
+
+                <div class="addPostButton">
+                    <a href="./index.php?action=newPostForm"><button type="button">+ Add Post</button></a>
+                </div>
+
+
+                <!------------------------------------- LOGOUT ------------------------------------------------->
+
+                <div class="logoutButton">
+                    <a href="index.php?action=logOut"><button type="button">Logout</button></a>
+                </div>
+            </div>
+            <!------------------------------------- FEED ------------------------------------------------->
+
+            <div class="feedContainer">
+                <?php
+                foreach ($posts as $post) {
+
+                    include "./view/components/postFeedDisplay.php";
+                }
+                ?>
+
+            </div>
 
 
 

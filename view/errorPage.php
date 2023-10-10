@@ -12,7 +12,7 @@
     <h1>Oh no. Something went wrong</h1>
     <h2><?= $e->getMessage(); ?></h2>
 
-    <a href="index.php?action=newUser">Retry</a>
+    <a href="index.php?action=showSignUpPage">Retry</a>
 
 
 </body>
