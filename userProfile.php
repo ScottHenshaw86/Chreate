@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile_Page</title>
+    <title>User_Page</title>
     <!-- boxICONS -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
     <!-- CSS link -->
-    <link rel="stylesheet" href="public/css/profilepage.css" />
+    <link rel="stylesheet" href="public/css/userProfile.css" />
     <!-- JS link -->
-    <script defer src="public/js/profilepage.js"></script>
+    <script defer src="public/js/userProfile.js"></script>
   </head>
   <body>
     <div class="header-wrapper">
@@ -22,12 +22,11 @@
         <!-- LEFT COLUMN -->
         <div class="left-col">
           <div class="img-container">
-            <img src="/public/images/profile1.jpg" alt="">
+            <img src="<?= $profile->profile_img ?? './public/images/user/user4.webp' ?>" alt="">
             <span></span>
           </div>
-          <h2>Lara Croft</h2>
-          <p>Photographer</p>
-          <p>larasphotos@gmail.com</p>
+          <h2><?= $profile->username ?></h2>
+          <p></p>
 
           <ul class="about">
             <li><span>8,473</span>Followers</li>
@@ -35,7 +34,7 @@
           </ul>
 
           <div class="content">
-            <p>With an eye for detail and a heart for capturing emotions, <br> I strive to create images that resonate and leave a lasting impression.</p>
+            <p><?= $profile->bio ?></p>
 
             <!-- SOCIAL MEDIA -->
             <ul>
@@ -60,18 +59,11 @@
           <!-- PHOTOS -->
 
           <div class="photos">
-            <img src="/public/images/profilepage/mtn.jpg" alt="">
-            <img src="/public/images/profilepage/camels.jpg" alt="">
-            <img src="/public/images/profilepage/trees.jpg" alt="">
-            <img src="/public/images/profilepage/seahorse.jpg" alt="">
-            <img src="/public/images/profilepage/sunset.jpg" alt="">
-            <img src="/public/images/profilepage/seal.jpg" alt="">
-            <img src="/public/images/profilepage/pug.jpg" alt="">
-            <img src="/public/images/profilepage/beach.jpg" alt="">
-            <img src="/public/images/profilepage/elephant.jpg" alt="">
-            <img src="/public/images/profilepage/lion.jpg" alt="">
-            <img src="/public/images/profilepage/bird.jpg" alt="">
-            <img src="/public/images/profilepage/greens.jpg" alt="">
+            <?php
+                foreach ($posts as $post) {
+                    include "./view/components/postFeedDisplay.php";
+                }
+                ?>
           </div>
 
 

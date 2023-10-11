@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Poppins:wght@400;500&display=swap');
+
+:root{
+    --bg-color:#1f242d;
+    --second-bg-color: #323946;
+    --text-color: #fff;
+    --main-color:#ee09ee;
+    --second-main-color:#38DD1D;
+    --hover-box-shadow: 0 0 1rem #ee09ee;
+    --gradient-bg-color: linear-gradient(to bottom, #1f242d, #ee09ee);
+    --transition: all .4s ease;
+}
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    position: relative;
+    min-height: 100vh;
+    background: var(--second-bg-color);
+}
+.container h1{
+    font-size: 2.5rem;
+    color: var(--text-color);
+    text-align: center;
+    padding: 2rem;
+}
+.container .image-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.image img{
+    width: 100%;
+}
+.container .image-container .image{
+    height: 250px;
+    width: 350px;
+    border: 10px solid var(--second-bg-color);
+    box-shadow: 0 5px 15px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.container .image-container .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+.container .image-container .image:hover img{
+    transform: scale(1.1);
+}
+
+/*MODAL*/
+.container .modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .83);
+    z-index: 100;
+    display: none;
+    
+}
+.container .modal span{
+    color: var(--text-color);
+    position: absolute;
+    right: 30px;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 100;
+}
+.container .modal img{
+    position: absolute;
+    top: 50%;
+    left: 53.1%;
+    transform: translate(-90%, -50%);
+    border: 5px solid var(--bg-color);
+    width: 750px;
+}
+.right-side{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute; 
+    height: 504px;
+    width: 500px;
+    background: var(--bg-color);
+    top: 50%;
+    left: 90%;
+    transform: translate(-90%, -50%);
+    color: var(--text-color);
+}
+.caption{
+    font-size: 1.2rem;
+    margin-left: .5rem;
+}
+.icons{
+    font-size: 2rem;
+    margin-left: .5rem;
+}
+.comment{
+    position: relative;
+    display: inline-block;
+}
+.comment input{
+    background: none;
+    color: var(--text-color);
+    width: 100%;
+    padding: 1rem;
+    border-right: none;
+    font-size: 1rem;
+    padding-right: 30px; 
+}
+.comment button{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.btn{
+    background: var(--main-color);
+    color: var(--bg-color);
+    padding: .6rem 1.5rem;
+    box-shadow: var(--hover-box-shadow);
+    font-size: 1rem;
+    transition: var(--transition);
+    border: none;
+    margin-top: .8rem;
+    cursor: pointer;
+}
+.btn:hover{
+    box-shadow: none;
+    color: var(--text-color);
+}
+
+@media (max-width:768px){
+    .container .modal img{
+        width: 95%;
+    }
+}
