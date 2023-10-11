@@ -42,7 +42,12 @@
         <!-------------------------------------- SEARCH SECTION -------------------------------------------->
         <div class="buttons">
             <div class="searchButton">
-                <a href="./index.php?action=search"><button>Search</button> </a>
+                <!-- <a href="./index.php?action=search"> -->
+                    <form action="index.php?action=searchUser" method="POST">
+                        <input id="search" type="text" placeholder="Search Username" name="userName">
+                        <input id="submit" type="submit" value="Search">
+                    </form>
+                <!-- </a> -->
             </div>
 
 
