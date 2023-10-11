@@ -149,15 +149,24 @@ try {
             editProfile($id, $username, $profileImg, $bio, $email, $password);
             break;
 
-            case "logOut":
-                logOut(); 
-                break;   
+        case "logOut":
+            logOut();
+            break;
+
+        case "searchUser":
+            $username = $_POST["userName"];
+            searchUser($username);
+            break;
+
+        case "searchingChallenges":
+            $challenges = $_POST["challenges"];
+            searchChallenge($challenges);
+            break;
+
 
         default:
             showHomePage();
             break;
-
-
     }
 } catch (Exception $e) {
     showErrorPage($e);

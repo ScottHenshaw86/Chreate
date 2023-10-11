@@ -193,3 +193,27 @@ function updateProfile($id, $username, $profileImg, $bio, $email, $password)
         'password' => $password
     ]);
 }
+
+function getUser($username) // first part for search up a user on homepage
+{
+    $db = dbConnect();
+
+    $req = $db->prepare("SELECT username FROM users WHERE username LIKE ?");
+    $req -> execute(['%'.$username . '%']);
+
+    $foundUser = $req->fetchall(PDO::FETCH_OBJ);
+
+    return $foundUser;
+}
+
+function searchingChallenges($challenges) 
+{
+    $db = dbConnect();
+
+    $req = $db->prepare("SELECT tag FROM challenges WHERE tag LIKE ?");
+    $req -> execute(['%'. $challenges . '%']);
+
+    $foundChallenge = $req->fetchAll(PDO::FETCH_OBJ);
+
+    return $foundChallenge;
+}
