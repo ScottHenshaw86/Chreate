@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/css/index_feed.css">
+    <link rel="stylesheet" href="./public/css/searchBar.css">
     <title>INDEX / HOME Page</title>
 </head>
 
@@ -28,7 +29,7 @@
     } else {
     ?>
         <a href="index.php?action=showSignUpPage">
-            <h2> Sign up</h2>
+            <h2> Sign up </h2>
         </a>
     <?php
     }
@@ -41,61 +42,91 @@
 
         <!-------------------------------------- SEARCH SECTION -------------------------------------------->
         <div class="buttons">
-            <div class="searchButton">
-                <!-- <a href="./index.php?action=search"> -->
-                    <form action="index.php?action=searchUser" method="POST">
-                        <input id="search" type="text" placeholder="Search Username" name="userName">
-                        <input id="submit" type="submit" value="Search">
-                    </form>
-                <!-- </a> -->
+            <div class="search">
+                <label for="userName">
+                    <h2>Search for user</h2>
+                </label>
+                <input type="text" id="userName">
+                <div class="searchContainer"></div>
             </div>
 
+            <script>
+                const serg = () => {
 
-            <!-------------------------------------- EXPLORE SECTION -------------------------------------------->
-            <div class="buttons">
-                <div class="exploreButton">
-                    <a href="./index.php?action=explore"><button> Explore </button> </a>
-                </div>
+                    const userInput = userName.value;
 
+                    //AJAX 
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', `http://localhost/sites/Chreate/index.php?action=searchUser&userName=${userInput}`);
+                    xhr.addEventListener('load', () => {
+                        const response = xhr.response;
+                        const usernames = response.split('||');
 
-                <!-------------------------------------- PROFILE SECTION --------------------------------------------->
+                        const div = document.querySelector('.searchContainer')
+                        div.innerHTML = "";
 
-                <div class="profileButton">
-                    <a href="./index.php?action=viewProfile"> <button>profile</button></a>
-                </div>
+                        for (let i = 0; i < usernames.length; i++) {
+                            const a = document.createElement('a');
+                            a.href = `index.php?action=userSelect&user=${usernames[i]}`;
+                            div.appendChild(a);
+                            a.textContent = usernames[i];
+                        }
+                    });
 
-
-                <!--------------------------------------- CHALLENGE OF THE DAY ---------------------------------------->
-
-                <div class="challengeButton">
-                    <a href="./index.php?action=challenge"><button>Challenge</button></a>
-                </div>
-
-
-                <!------------------------------------- ADD POST ------------------------------------------------->
-
-                <div class="addPostButton">
-                    <a href="./index.php?action=newPostForm"><button type="button">+ Add Post</button></a>
-                </div>
-
-
-                <!------------------------------------- LOGOUT ------------------------------------------------->
-
-                <div class="logoutButton">
-                    <a href="index.php?action=logOut"><button type="button">Logout</button></a>
-                </div>
-            </div>
-            <!------------------------------------- FEED ------------------------------------------------->
-
-            <div class="feedContainer">
-                <?php
-                foreach ($posts as $post) {
-
-                    include "./view/components/postFeedDisplay.php";
+                    xhr.send(null);
                 }
-                ?>
 
-            </div>
+                userName.addEventListener('keyup', serg);
+            </script>
+        </div>
+    </div>
+
+
+    <!-------------------------------------- EXPLORE SECTION -------------------------------------------->
+    <div class="buttons">
+        <div class="exploreButton">
+            <a href="./index.php?action=explore"><button> Explore </button> </a>
+        </div>
+
+
+        <!-------------------------------------- PROFILE SECTION --------------------------------------------->
+
+        <div class="profileButton">
+            <a href="./index.php?action=viewProfile"> <button>profile</button></a>
+        </div>
+
+
+        <!--------------------------------------- CHALLENGE OF THE DAY ---------------------------------------->
+
+        <div class="challengeButton">
+            <a href="./index.php?action=challenge"><button>Challenge</button></a>
+        </div>
+
+
+        <!------------------------------------- ADD POST ------------------------------------------------->
+
+        <div class="addPostButton">
+            <a href="./index.php?action=newPostForm"><button type="button">+ Add Post</button></a>
+        </div>
+
+
+        <!------------------------------------- LOGOUT ------------------------------------------------->
+
+        <div class="logoutButton">
+            <a href="index.php?action=logOut"><button type="button">Logout</button></a>
+        </div>
+    </div>
+    <!------------------------------------- FEED ------------------------------------------------->
+
+    <div class="feedContainer">
+        <?php
+        foreach ($posts as $post) {
+
+            include "./view/components/postFeedDisplay.php";
+        }
+        ?>
+
+    </div>
 
 
 
