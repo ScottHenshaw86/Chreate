@@ -198,19 +198,37 @@ function getUser($username) // first part for search up a user on homepage
     $req = $db->prepare("SELECT username FROM users WHERE username LIKE ?");
     $req -> execute(['%'.$username . '%']);
 
-    $foundUser = $req->fetchall(PDO::FETCH_OBJ);
+    $foundUsers = $req->fetchall(PDO::FETCH_OBJ);
 
-    return $foundUser;
+    return $foundUsers;
 }
 
-function searchingChallenges($challenges) 
+function searchingChallenges($challenge) 
 {
     $db = dbConnect();
 
     $req = $db->prepare("SELECT tag FROM challenges WHERE tag LIKE ?");
-    $req -> execute(['%'. $challenges . '%']);
+    $req -> execute(['%'. $challenge . '%']);
 
     $foundChallenge = $req->fetchAll(PDO::FETCH_OBJ);
 
     return $foundChallenge;
 }
+
+function getUserByUsername($username)
+{
+    $db = dbconnect();
+
+    $req = $db->prepare("SELECT * FROM users WHERE username = ?");
+    $req -> execute([$username]);
+
+    $foundProfile = $req->fetch(PDO::FETCH_OBJ);
+    return $foundProfile;
+}
+
+// Create a new function here
+// It should take in the username as a parameter
+// It will connect to the db
+// It will query the users table for a user with that username
+// It will fetch the user's data and return it
+
