@@ -154,15 +154,19 @@ try {
             break;
 
         case "searchUser":
-            $username = $_POST["userName"];
+            $username = $_GET["userName"];
             searchUser($username);
             break;
 
         case "searchingChallenges":
-            $challenges = $_POST["challenges"];
-            searchChallenge($challenges);
+            $challenge = $_POST["challenges"];
+            searchChallenge($challenge);
             break;
 
+        case "userSelect":
+            $profileDirect = $_GET["user"];
+            aProfileDirect($profileDirect);
+            break;
 
         default:
             showHomePage();

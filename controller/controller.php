@@ -160,12 +160,36 @@ function createPost($caption, $media_src)
 
 function searchUser($username)
 {
-    $user = getUser($username);
-    print_r($user);
+    $users = getUser($username);
+    // Loop through $users.
+    $usernames = [];
+
+    foreach($users as $user) {
+        $usernames[] = $user->username;
+    }
+
+    // Put all the usernames into a new array
+    // implode the array and echo the resulting string
+
+    $matches = implode("||", $usernames);
+    echo $matches;
+
+
+
 }
 
-function searchChallenge($challenges)
+function searchChallenge($challenge)
 {
-    $challenge = searchingChallenges($challenges);
-    print_r($challenge);
+    $challenges = searchingChallenges($challenge);
+    print_r($challenges);
 }
+
+function aProfileDirect($profileDirect)
+{
+    // Call a model function and save the result in a $profile variable    
+    // Include profilePage.php
+    $profile = getUserByUsername($profileDirect);
+    $posts = getProfilePosts($profile->id);
+    include "./view/profilePage.php";
+}
+
