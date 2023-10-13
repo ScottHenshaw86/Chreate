@@ -18,7 +18,7 @@ function checkSignin($usernameOrEmail, $password)
 {
 
     $db = dbConnect();
-    $req = $db->prepare("SELECT id, username, email, password FROM users WHERE username = :username OR email = :email");
+    $req = $db->prepare("SELECT id, username, email, password, profile_img FROM users WHERE username = :username OR email = :email");
     $req->execute([
         'username' => $usernameOrEmail,
         'email' => $usernameOrEmail
