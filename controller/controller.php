@@ -30,6 +30,7 @@ function getSignIn($usernameOrEmail, $password)
     if ($user) {
         $_SESSION['id'] = $user->id;
         $_SESSION['username'] = $user->username;
+        $_SESSION['profilePic'] = $user->profile_img;
 
         header("Location: index.php?action=feed");
     } else {

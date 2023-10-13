@@ -59,7 +59,6 @@
           <!-- PHOTOS -->
 
           <div class="photos">
-           
             <?php
                 foreach ($posts as $post) {
                     include "./view/components/postFeedDisplay.php";
