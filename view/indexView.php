@@ -98,7 +98,7 @@
 
                     //AJAX 
                     const xhr = new XMLHttpRequest();
-                    xhr.open('GET', `http://localhost/sites/Chreate/index.php?action=searchUser&userName=${userInput}`);
+                    xhr.open('GET', `http://<?= getenv("LOCALHOST"); ?>/sites/Chreate/index.php?action=searchUser&userName=${userInput}`);
                     xhr.addEventListener('load', () => {
                         const response = xhr.response;
                         const usernames = response.split('||');
