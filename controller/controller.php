@@ -173,16 +173,29 @@ function searchUser($username)
 
     $matches = implode("||", $usernames);
     echo $matches;
-
-
-
 }
 
 function searchChallenge($challenge)
 {
     $challenges = searchingChallenges($challenge);
-    print_r($challenges);
+    
+    $challengeArr = [];
+
+    foreach($challenges as $challengeData) {
+        $challengeArr[] = $challengeData->tag;
+    }
+
+    $searchResult = implode("||", $challengeArr);
+    echo $searchResult;
+
 }
+
+function selectPost($post)
+{
+    $post = selectingPost($post);
+    print_r($post);
+}
+
 
 function aProfileDirect($profileDirect)
 {
@@ -193,3 +206,9 @@ function aProfileDirect($profileDirect)
     include "./view/profilePage.php";
 }
 
+function likePost($get_user_id, $get_post_id)
+{
+    $response = likePosts($get_user_id, $get_post_id);
+    echo $response;
+    
+}

@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOXICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
+
     <!-- CSS links -->
     <link rel="stylesheet" href="./public/css/indexView.css">
     <link rel="stylesheet" href="./public/css/index_feed.css">
     <link rel="stylesheet" href="./public/css/searchBar.css">
+
+    <!-- JS links -->
+    <script defer src="./public/js/searchbar.js"></script>
     <title>INDEX / HOME Page</title>
 </head>
 
@@ -39,15 +42,14 @@
         <div class="logo">
             <a href="./index.php?action=indexView.php"><img src="./public/images/logo2.png" alt="" /></a>
         </div>
-<!--         <a href="./index.php?action=search" class="icons searchButton tooltip">
+
+        <label for="userName">
+        </label>
+
+        <a href="./index.php?action=search" class="icons searchButton tooltip">
             <i class="bx bx-search"></i>
             <span class="tooltiptext">Search</span>
-        </a> -->
-      <label for="userName">
-                    <h2>Search for user</h2>
-                </label>
-                <input type="text" id="userName">
-                <div class="searchContainer"></div>
+        </a>
         <a href="./index.php?action=explore" class="icons tooltip">
             <i class="bx bx-compass"></i>
             <span class="tooltiptext">Explore</span>
@@ -64,6 +66,18 @@
             <i class="bx bx-log-out-circle"></i>
             <span class="tooltiptext">Log Out</span>
         </a>
+        <div class="modal">
+            <span>&times;</span>
+            <!--     <a href="./index.php?action=search" class="icons searchButton tooltip">
+            <i class="bx bx-search"></i>
+            <span class="tooltiptext">Search</span>
+        </a> -->
+            <div class="right-side">
+                <div class="caption">Lorem Ipsum Mother Fucker</div>
+                <input type="text" id="userName">
+                <div class="searchContainer"></div> 
+            </div>
+        </div>
     </div>
 
     <!-- POST -->
@@ -84,41 +98,43 @@
         </div>
     </div>
 
-`    <!-- User Profile -->`
+    ` <!-- User Profile -->`
     <div class="user-profile">
         <a href="./index.php?action=profilePage">
-        <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
-        <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
+            <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
+            <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
         </a>
     </div>
- <script>
-                const serg = () => {
+    <script>
+        const serg = () => {
 
-                    const userInput = userName.value;
+            const userInput = userName.value;
 
-                    //AJAX 
-                    const xhr = new XMLHttpRequest();
-                    xhr.open('GET', `http://<?= getenv("LOCALHOST"); ?>/sites/Chreate/index.php?action=searchUser&userName=${userInput}`);
-                    xhr.addEventListener('load', () => {
-                        const response = xhr.response;
-                        const usernames = response.split('||');
+            //AJAX 
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `http://<?= getenv("LOCALHOST"); ?>/sites/Chreate/index.php?action=searchUser&userName=${userInput}`);
+            xhr.addEventListener('load', () => {
+                const response = xhr.response;
+                const usernames = response.split('||');
 
-                        const div = document.querySelector('.searchContainer')
-                        div.innerHTML = "";
+                const div = document.querySelector('.searchContainer')
+                div.innerHTML = "";
 
-                        for (let i = 0; i < usernames.length; i++) {
-                            const a = document.createElement('a');
-                            a.href = `index.php?action=userSelect&user=${usernames[i]}`;
-                            div.appendChild(a);
-                            a.textContent = usernames[i];
-                        }
-                    });
-
-                    xhr.send(null);
+                for (let i = 0; i < usernames.length; i++) {
+                    const a = document.createElement('a');
+                    a.href = `index.php?action=userSelect&user=${usernames[i]}`;
+                    div.appendChild(a);
+                    a.textContent = usernames[i];
                 }
+            });
 
-                userName.addEventListener('keyup', serg);
-            </script>
+            xhr.send(null);
+        }
+
+        userName.addEventListener('keyup', serg);
+    </script>
+
+    
 </body>
 
 </html>

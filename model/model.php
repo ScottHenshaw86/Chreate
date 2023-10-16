@@ -53,7 +53,7 @@ function getPosts()
     $db = dbConnect();
 
     $response = $db->query("SELECT 
-                                p.captions, p.media_src, p.date_created, c.tag, u.username
+                                p.id, p.captions, p.media_src, p.date_created, c.tag, u.username
                             FROM posts p
                             INNER JOIN challenges c
                             ON p.challenge_id = c.id
@@ -196,23 +196,11 @@ function getUser($username) // first part for search up a user on homepage
     $db = dbConnect();
 
     $req = $db->prepare("SELECT username FROM users WHERE username LIKE ?");
-    $req -> execute(['%'.$username . '%']);
+    $req->execute(['%' . $username . '%']);
 
     $foundUsers = $req->fetchall(PDO::FETCH_OBJ);
 
     return $foundUsers;
-}
-
-function searchingChallenges($challenge) 
-{
-    $db = dbConnect();
-
-    $req = $db->prepare("SELECT tag FROM challenges WHERE tag LIKE ?");
-    $req -> execute(['%'. $challenge . '%']);
-
-    $foundChallenge = $req->fetchAll(PDO::FETCH_OBJ);
-
-    return $foundChallenge;
 }
 
 function getUserByUsername($username)
@@ -220,11 +208,35 @@ function getUserByUsername($username)
     $db = dbconnect();
 
     $req = $db->prepare("SELECT * FROM users WHERE username = ?");
-    $req -> execute([$username]);
+    $req->execute([$username]);
 
     $foundProfile = $req->fetch(PDO::FETCH_OBJ);
     return $foundProfile;
 }
+
+function searchingChallenges($challenge)
+{
+    $db = dbConnect();
+
+    $req = $db->prepare("SELECT tag FROM challenges WHERE tag LIKE ?");
+    $req->execute(['%' . $challenge . '%']);
+
+    $foundChallenge = $req->fetchAll(PDO::FETCH_OBJ);
+
+    return $foundChallenge;
+}
+
+function selectingPost($post)
+{
+    $db = dbconnect();
+
+    $req = $db->prepare("SELECT * FROM posts where challenge_id = ?");
+    $req->execute([$post]);
+
+    $selectedPost = $req->fetch(PDO::FETCH_OBJ);
+    return $selectedPost;
+}
+
 
 // Create a new function here
 // It should take in the username as a parameter
@@ -232,3 +244,26 @@ function getUserByUsername($username)
 // It will query the users table for a user with that username
 // It will fetch the user's data and return it
 
+function likePosts($get_user_id, $get_post_id)
+{
+    $db = dbconnect();
+
+    $req = $db->prepare("SELECT * FROM post_likes WHERE user_id = ? AND post_id = ?");
+    $req->execute([$get_user_id, $get_post_id]);
+
+    $likesInfo = $req->fetch(PDO::FETCH_OBJ);
+
+    if ($likesInfo) {
+        // if true the user already liked to post so if they click again we gotta unlike it
+        $req = $db->prepare("DELETE FROM post_likes WHERE user_id = ? AND post_id = ?");
+        $req->execute([$get_user_id, $get_post_id]);
+        return "unlike";
+    } else {
+        $req = $db->prepare("INSERT INTO post_likes (user_id, post_id) VALUES (:user_id, :post_id)");
+        $req->execute([
+            'user_id' => $get_user_id,
+            'post_id' => $get_post_id
+        ]);
+        return "like";
+    }
+}
