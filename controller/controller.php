@@ -62,7 +62,7 @@ function showExplorePage()
 function showChallengePage()
 {
     $challenge = getChallenges();
-    include  "./view/components/challengePageDisplay.php";
+    include  "./view/challengePageDisplay.php";
 }
 
 function showProfile()
@@ -100,7 +100,7 @@ function showFeed()
 
 function newPostForm()
 {
-    include "./view/components/newPostForm.php";
+    include "./view/newPostForm.php";
 }
 
 function logOut()

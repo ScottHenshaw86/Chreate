@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- BOXICONS -->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
      <!-- CSS link -->
-     <link rel="stylesheet" href="./public/css/newPostForm.css">
-    <!-- BOXICONS -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>New Post</title>
+     <link rel="stylesheet" href="./public/css/challengePageDisplay.css">
 </head>
 
 <body>
-     <!-- NAVBAR -->
-     <a href="./index.php?action=challenge">
+    <!-- NAVBAR -->
+    <a href="./index.php?action=challenge">
         <button class="btn challenge-btn">Challenge of the Day</button>
     </a>
 
@@ -46,30 +46,25 @@
 
     <div class="main">
         <div class="formContainer">
-            <form action="./index.php?action=createPost" method="post" enctype="multipart/form-data">
-                <input type="text" name="caption" id="caption" placeholder="Caption">
-
-                <!-- <label for="media">Media</label> -->
-                <input type="file" name="media" id="media" accept=".jpg,.jpeg,.png,.mp4,.mov " placeholder="Media">
-
-                <button type="submit" value="Upload Image/Video" name="submit" class="add-btn">Add</button>
-            </form>
+        <h1>Challenge of the Day</h1>
+        <h3> Title: <?= $challenge->title ?></h3>
+        <h3> Tag: <?= $challenge->tag ?></h3>
+        <a href="#"> <button class="accept-btn">Challenge Accepted</button></a>
+        <a href="#"> <button class="decline-btn">Challenge Declined</button></a>
         </div>
     </div>
 
 
+    <!-- <h2> date: <?= $challenge->start_date ?></h2>
+    <h2> tag: <?= $challenge->tag ?></h2> -->
 
-
-    <!-- User Profile -->
-    <div class="user-profile">
+      <!-- User Profile -->
+      <div class="user-profile">
         <a href="./index.php?action=profilePage">
         <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
         <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
         </a>
     </div>
-
 </body>
 
 </html>
-
- 
