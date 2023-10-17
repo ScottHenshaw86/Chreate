@@ -1,11 +1,12 @@
-
         .searchContainer {
-            position: absolute;
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
+            position: absolute;
+            top: 20px;
             background-color: white;
             outline: 1px solid black;
-            width: 11.1%;
+            width: 20%;
+            /* z-index: 900; */
             
         }
 
@@ -14,5 +15,14 @@
             border: none;
             outline: 1px solid black;
         }
+
+        .searchButton{
+            position: relative;
+            margin-top: 95px;
+        }
+
+        
+
+
 
         

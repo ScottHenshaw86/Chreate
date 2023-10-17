@@ -1,14 +1,17 @@
-document.querySelectorAll('.modal i').forEach(icon =>{
-    icon.onclick = () => {
-        document.querySelector('.modal').style.display = 'block';
-        document.querySelector('.modal i').src = image.getAttribute('src');
-    }
+// modal
+
+document.querySelectorAll('button i').forEach(i => {
+    post.addEventListener('click', (e) => {
+        const postContent = post.innerHTML;
+        const modal = document.querySelector('.modal');
+        const postContentDiv = modal.querySelector('.post-content');
+        postContentDiv.innerHTML = postContent;
+
+        modal.style.display = 'block';
+    });
 });
 
-document.querySelector('.modal span').onclick = () =>{
+// Close the modal when clicking on the close button
+document.querySelector('.modal span').onclick = () => {
     document.querySelector('.modal').style.display = 'none';
-}
-
-if() {
-    
-}
+};

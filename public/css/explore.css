@@ -114,7 +114,6 @@ body{
         border-radius: 1rem;
         padding: .3rem 2rem;
         font-size: 1rem;
-        margin-top: 95px;
     }
     #submit{
         background: var(--main-color);
