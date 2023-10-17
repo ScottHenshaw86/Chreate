@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
-    <!-- CSS link -->
-    <link rel="stylesheet" href="./public/css/editProfile.css">
-    <!-- boxICONS -->
+     <!-- CSS link -->
+     <link rel="stylesheet" href="./public/css/newPostForm.css">
+    <!-- BOXICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-
+    <title>New Post</title>
 </head>
 
 <body>
@@ -45,21 +43,34 @@
         </a>
     </div>
 
+
     <div class="main">
-        <h1>Edit profile page</h1>
         <div class="formContainer">
-            <form action="index.php?action=editProfile" method="post">
-                <input type="hidden" name="id" id="id" value="<?= $user->id ?>">
-                <input type="text" name="username" id="username" value="<?= $user->username ?>">
-                <input type="text" name="bio" id="bio" value="<?= $user->bio ?>">
-                <input type="text" name="profileImg" id="profileImg" value="<?= $user->profile_img ?>">
-                <input type="text" name="email" id="email" value="<? $user->email ?>">
-                <input type="text" name="password" id="password" value="">
-                <button type="submit">Update</button>
+            <form action="./index.php?action=createPost" method="post" enctype="multipart/form-data">
+                <input type="text" name="caption" id="caption" placeholder="Caption">
+
+                <!-- <label for="media">Media</label> -->
+
+                <input type="file" name="media" id="media" accept=".jpg,.jpeg,.png,.mp4,.mov " placeholder="Media">
+
+                <button type="submit" value="Upload Image/Video" name="submit" class="add-btn">Add</button>
             </form>
         </div>
+    </div>
+
+
+
+
+    <!-- User Profile -->
+    <div class="user-profile">
+        <a href="./index.php?action=profilePage">
+        <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
+        <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
+        </a>
     </div>
 
 </body>
 
 </html>
+
+ 

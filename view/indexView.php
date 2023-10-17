@@ -46,38 +46,34 @@
         <label for="userName">
         </label>
 
-        <a href="./index.php?action=search" class="icons searchButton tooltip">
+        <button class="icons searchButton tooltip">
             <i class="bx bx-search"></i>
             <span class="tooltiptext">Search</span>
-        </a>
-        <a href="./index.php?action=explore" class="icons tooltip">
-            <i class="bx bx-compass"></i>
-            <span class="tooltiptext">Explore</span>
-        </a>
-        <a href="./index.php?action=newPostForm" class="icons tooltip">
-            <i class="bx bxs-camera-plus"></i>
-            <span class="tooltiptext">Add Post</span>
-        </a>
-        <a href="./index.php?action=challenge" class="icons tooltip">
-            <i class='bx bx-party'></i>
-            <span class="tooltiptext">Challenge</span>
-        </a>
-        <a href="index.php?action=logOut" class="icons tooltip">
-            <i class="bx bx-log-out-circle"></i>
-            <span class="tooltiptext">Log Out</span>
-        </a>
-        <div class="modal">
-            <span>&times;</span>
-            <!--     <a href="./index.php?action=search" class="icons searchButton tooltip">
-            <i class="bx bx-search"></i>
-            <span class="tooltiptext">Search</span>
-        </a> -->
-            <div class="right-side">
-                <div class="caption">Lorem Ipsum Mother Fucker</div>
-                <input type="text" id="userName">
-                <div class="searchContainer"></div> 
+            </button>
+            <a href="./index.php?action=explore" class="icons tooltip">
+                <i class="bx bx-compass"></i>
+                <span class="tooltiptext">Explore</span>
+            </a>
+            <a href="./index.php?action=newPostForm" class="icons tooltip">
+                <i class="bx bxs-camera-plus"></i>
+                <span class="tooltiptext">Add Post</span>
+            </a>
+            <a href="./index.php?action=challenge" class="icons tooltip">
+                <i class='bx bx-party'></i>
+                <span class="tooltiptext">Challenge</span>
+            </a>
+            <a href="index.php?action=logOut" class="icons tooltip">
+                <i class="bx bx-log-out-circle"></i>
+                <span class="tooltiptext">Log Out</span>
+            </a>
+            <div class="modal">
+                <span>&times;</span>
+                <div class="right-side">
+                    <div class="caption">Lorem Ipsum Mother Fucker</div>
+                    <input type="text" id="userName">
+                    <div class="searchContainer"></div>
+                </div>
             </div>
-        </div>
     </div>
 
     <!-- POST -->
@@ -100,7 +96,7 @@
 
     ` <!-- User Profile -->`
     <div class="user-profile">
-        <a href="./index.php?action=profilePage">
+        <a href="./index.php?action=viewProfile">
             <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
             <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
         </a>
@@ -134,7 +130,7 @@
         userName.addEventListener('keyup', serg);
     </script>
 
-    
+
 </body>
 
 </html>
