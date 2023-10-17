@@ -26,7 +26,7 @@
             <span></span>
           </div>
           <h2><?= $profile->username ?></h2>
-          <p></p>
+          <a href="./index.php?action=editProfileForm"><button class="edit-btn">Edit Profile</button></a>
 
           <ul class="about">
             <li><span>8,473</span>Followers</li>

@@ -28,8 +28,8 @@ body{
     height: 100vh;
 }
 .navbar {
-    position: fixed;
-    top: 0;
+      position: fixed;
+      top: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -96,73 +96,38 @@ body{
         cursor: pointer;
         display: block;
         margin: 0 auto;
-        width: 50%;    
+        width: 50%; 
     }
     .btn:hover{
         box-shadow: none;
         color: var(--text-color);
     }
     .main{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      
-    }
-    .formContainer{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        background: var(--second-bg-color);                           
-        border-radius: 1.2rem;
-        width: 50rem;
-        height: 22rem;
-        position: relative;
-        color: var(--text-color);
-        box-shadow: var(--box-shadow);
-         overflow: hidden; /*hides any content that overflows the box*/
-    }
-    .formContainer h1{
-        text-align: center;
-    }
-    .formContainer h3{
-        padding: 1rem;
-    }
-    .formContainer .btns{
-        display: flex;
-        justify-content: center;
-        gap: 35px;
-    }
-    .user-profile img{
-        position: absolute;
-        border-radius: 50%;
-        width: 55px;
-        top:15px;
-        right: 150px;
-       }
-    .user-profile h4{
-        color: var(--text-color);
-        position: absolute;
-        top: 30px;
-        right: 50px;
-       }
-    .accept-btn,.decline-btn{
-        background: var(--main-color);
-        color: var(--bg-color);
-        padding: .6rem 1.5rem;
-        box-shadow: var(--hover-box-shadow);
-        font-size: 1rem;
-        border-radius: 3rem;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-       }
-       .accept-btn:hover{
-        box-shadow: none;
-        color: var(--text-color);
-    }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     
-        .decline-btn:hover{
-        box-shadow: none;
-        color: var(--text-color);
-    }
+  }
+  .formContainer{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      background: var(--second-bg-color);                           
+      border-radius: 1.2rem;
+      width: 50rem;
+      height: 22rem;
+      position: relative;
+      color: var(--text-color);
+      box-shadow: var(--box-shadow);
+       overflow: hidden; /*hides any content that overflows the box*/
+  }
+  .formContainer h1{
+      text-align: center;
+  }
+  .formContainer h3{
+      padding: 1rem;
+  }
+  .formContainer form input{
+      display: flex;  
+  }
