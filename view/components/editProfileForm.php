@@ -46,16 +46,20 @@
     </div>
 
     <div class="main">
-        <h1>Edit profile page</h1>
         <div class="formContainer">
             <form action="index.php?action=editProfile" method="post">
+                <h1>Edit Profile</h1>
                 <input type="hidden" name="id" id="id" value="<?= $user->id ?>">
-                <input type="text" name="username" id="username" value="<?= $user->username ?>">
-                <input type="text" name="bio" id="bio" value="<?= $user->bio ?>">
-                <input type="text" name="profileImg" id="profileImg" value="<?= $user->profile_img ?>">
-                <input type="text" name="email" id="email" value="<? $user->email ?>">
-                <input type="text" name="password" id="password" value="">
-                <button type="submit">Update</button>
+                <input type="text" name="username" id="username" placeholder="Username" value="<?= $user->username ?>">
+                <input type="text" name="bio" id="bio" placeholder="Bio" value="<?= $user->bio ?>">
+                <!-- <input type="text" name="profileImg" id="profileImg" value="<?= $user->profile_img ?>"> -->
+                <!-- <button type="submit" value="Upload Image/Video" name="submit" class="add-btn">Add</button> -->
+                <input type="text" name="email" id="email" placeholder="Email" value="<? $user->email ?>">
+                <input type="text" name="password" id="password" placeholder="Password" value="">
+                <input type="text" name="password" id="password" placeholder="Confirm Password" value="">
+                <input type="file" name="media" id="media" accept=".jpg,.jpeg,.png" placeholder="Media"<?= $user->profile_img ?>>
+                
+                <button class="update-btn" type="submit">Update</button>
             </form>
         </div>
     </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!-- CSS link -->
-     <link rel="stylesheet" href="./public/css/newPostForm.css">
+     <link rel="stylesheet" href="./public/css/addPostForm.css">
     <!-- BOXICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>New Post</title>
@@ -63,7 +63,7 @@
 
     <!-- User Profile -->
     <div class="user-profile">
-        <a href="./index.php?action=profilePage">
+        <a href="./index.php?action=viewProfile">
         <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
         <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
         </a>

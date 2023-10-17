@@ -62,7 +62,7 @@
 
     <!-- User Profile -->
     <div class="user-profile">
-        <a href="./index.php?action=profilePage">
+        <a href="./index.php?action=viewProfile">
             <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
             <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
         </a>
