@@ -122,9 +122,14 @@ body{
     width: auto;
     height: 400px
  }
- .bx-heart:before {
+ .bx-heart:before, .bxs-heart:before {
   font-size: 2.4rem;
  }
+
+.bxs-heart {
+  color: var(--main-color);
+}
+
  .user-profile img{
   position: absolute;
   border-radius: 50%;

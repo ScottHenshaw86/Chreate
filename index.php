@@ -158,14 +158,25 @@ try {
             searchUser($username);
             break;
 
-        case "searchingChallenges":
-            $challenge = $_POST["challenges"];
-            searchChallenge($challenge);
-            break;
-
         case "userSelect":
             $profileDirect = $_GET["user"];
             aProfileDirect($profileDirect);
+            break;
+
+        case "searchingChallenges":
+            $challenge = $_GET["challenges"];
+            searchChallenge($challenge);
+            break;
+
+        case "challengePostSelect":
+            $challengePosts = $_GET["post"];
+            selectPost($post);
+            break;    
+
+        case "likePost":
+            $get_user_id = $_GET["user_id"];
+            $get_post_id = $_GET["post_id"];
+            likePost($get_user_id, $get_post_id);
             break;
 
         default:

@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="./public/css/indexView.css">
     <link rel="stylesheet" href="./public/css/index_feed.css">
     <link rel="stylesheet" href="./public/css/searchBar.css">
+
+    <!-- JS links -->
+    <script defer src="./public/js/searchbar.js"></script>
     <title>INDEX / HOME Page</title>
    
 </head>
@@ -40,31 +43,38 @@
         <div class="logo">
             <a href="./index.php?action=indexView.php"><img src="./public/images/logo2.png" alt="" /></a>
         </div>
-        <!--         <a href="./index.php?action=search" class="icons searchButton tooltip">
+
+        <label for="userName">
+        </label>
+
+        <button class="icons searchButton tooltip">
             <i class="bx bx-search"></i>
             <span class="tooltiptext">Search</span>
-        </a> -->
-        <label for="userName">
-            <h2>Search for user</h2>
-        </label>
-        <input type="text" id="userName">
-        <div class="searchContainer"></div>
-        <a href="./index.php?action=explore" class="icons tooltip">
-            <i class="bx bx-compass"></i>
-            <span class="tooltiptext">Explore</span>
-        </a>
-        <a href="./index.php?action=newPostForm" class="icons tooltip">
-            <i class="bx bxs-camera-plus"></i>
-            <span class="tooltiptext">Add Post</span>
-        </a>
-        <a href="./index.php?action=challenge" class="icons tooltip">
-            <i class='bx bx-party'></i>
-            <span class="tooltiptext">Challenge</span>
-        </a>
-        <a href="index.php?action=logOut" class="icons tooltip">
-            <i class="bx bx-log-out-circle"></i>
-            <span class="tooltiptext">Log Out</span>
-        </a>
+            </button>
+            <a href="./index.php?action=explore" class="icons tooltip">
+                <i class="bx bx-compass"></i>
+                <span class="tooltiptext">Explore</span>
+            </a>
+            <a href="./index.php?action=newPostForm" class="icons tooltip">
+                <i class="bx bxs-camera-plus"></i>
+                <span class="tooltiptext">Add Post</span>
+            </a>
+            <a href="./index.php?action=challenge" class="icons tooltip">
+                <i class='bx bx-party'></i>
+                <span class="tooltiptext">Challenge</span>
+            </a>
+            <a href="index.php?action=logOut" class="icons tooltip">
+                <i class="bx bx-log-out-circle"></i>
+                <span class="tooltiptext">Log Out</span>
+            </a>
+            <div class="modal">
+                <span>&times;</span>
+                <div class="right-side">
+                    <div class="caption">Lorem Ipsum Mother Fucker</div>
+                    <input type="text" id="userName">
+                    <div class="searchContainer"></div>
+                </div>
+            </div>
     </div>
 
     <!-- POST -->
@@ -139,6 +149,7 @@
         }
 
         userName.addEventListener('keyup', serg);
+
 
 
         // modal

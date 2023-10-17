@@ -7,6 +7,7 @@
     <title>Explore Page</title>
     <!-- CSS link -->
     <link rel="stylesheet" href="./public/css/explore.css">
+    <link rel="stylesheet" href="./public/css/searchbar.css">
     <!-- boxICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -45,10 +46,11 @@
     </div>
 
     <div class="searchButton">
-        <form action="index.php?action=searchingChallenges" method="POST">
-            <input id="search" type="text" placeholder="Search Challenge" name="challenges">
-            <input id="submit" type="submit" value="Search">
-        </form>
+        <!-- <form action="index.php?action=searchingChallenges" method="POST"> -->
+        <input id="search" type="text" placeholder="Search Challenge" name="challenges">
+        <div class="searchContainer"></div>
+        <!-- <input id="submit" type="submit" value="Search"> -->
+        <!-- </form> -->
     </div>
 
     <!-- <div class="feedContainer">
@@ -60,8 +62,39 @@
 
     </div> -->
 
+    <script>
+        const requestExplorePostData = () => {
+
+            const postSelect = search.value;
+
+            //AJAX 
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `http://<?= getenv("LOCALHOST"); ?>/sites/Chreate/index.php?action=searchingChallenges&challenges=${postSelect}`);
+            xhr.addEventListener('load', () => {
+                const response = xhr.response;
+                console.log(response);
+                const challenges = response.split('||');
+
+                const div = document.querySelector('.searchContainer')
+                console.log(div);
+
+                div.innerHTML = "";
+                for (let i = 0; i < challenges.length; i++) {
+                    const a = document.createElement('a');
+                    a.href = `index.php?action=challengePostSelect&post=${challenges[i]}`;
+                    div.appendChild(a);
+                    a.textContent = challenges[i];
+                }
+            });
+
+            xhr.send(null);
+        }
+
+        search.addEventListener('keyup', requestExplorePostData);
+    </script>
+
     <!-- photo gallery -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="photo-gallery">
             <div class="column">
                 <div class="photo">
@@ -105,7 +138,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
         <!-- User Profile -->
         <div class="user-profile">
@@ -114,6 +147,7 @@
                 <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
             </a>
         </div>
+    </div>
 </body>
 
 </html>
