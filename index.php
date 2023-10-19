@@ -40,6 +40,11 @@ try {
             createPost($caption, $media_src);
             break;
 
+        case "changePfp":
+            $media_src = $_REQUEST['media'] ?? null;
+            uploadpfp($media_src);
+            break;
+
         case "showSignUpPage":
             getSignUpForm();
             break;
@@ -141,12 +146,14 @@ try {
         case "editProfile":
             $id = $_REQUEST['id'];
             $username = $_REQUEST['username'];
-            $profileImg = $_REQUEST['profileImg'];
+            // $profileImg = $_REQUEST['profileImg'];
             $email = $_REQUEST['email'];
-            $password = $_REQUEST['password'];
+            // $password = $_REQUEST['password'];
             $bio = $_REQUEST['bio'];
+            $media_src = $_REQUEST['media'] ?? null;
+            // uploadpfp($media_src);   
 
-            editProfile($id, $username, $profileImg, $bio, $email, $password);
+            editProfile($id, $username, $media_src, $bio, $email);
             break;
 
         case "logOut":
@@ -171,12 +178,17 @@ try {
         case "challengePostSelect":
             $challengePosts = $_GET["post"];
             selectPost($post);
-            break;    
+            break;
 
         case "likePost":
             $get_user_id = $_GET["user_id"];
             $get_post_id = $_GET["post_id"];
             likePost($get_user_id, $get_post_id);
+            break;
+
+        case "getAllPostDataById":
+            $id = $_GET['id'];
+            getAllPostData($id);
             break;
 
         default:

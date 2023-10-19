@@ -1,4 +1,4 @@
-<div class="post">
+<div class="post" onclick="showModalForPost(<?= $post->id ?>)">
 
     <div class="postdetails">
         <div class="useronpost"><?= htmlspecialchars($post->username) ?></div>

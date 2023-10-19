@@ -92,6 +92,14 @@ function addNewPost($caption, $media_src)
     ]);
 };
 
+function addNewPfp($media_src)
+{
+    $db = dbConnect();
+
+    $req = $db->prepare("INSERT INTO users (profile_img) VALUES (:profile_img)");
+    $req->execute(['profile_img' => $media_src]);
+};
+
 function getProfile()
 {
     $id = $_SESSION["id"];
@@ -176,18 +184,17 @@ function getProfilePosts($user)
     return $posts;
 }
 
-function updateProfile($id, $username, $profileImg, $bio, $email, $password)
+function updateProfile($id, $username, $profileImg, $bio, $email)
 {
 
     $db = dbConnect();
-    $req = $db->prepare("UPDATE users SET username = :username, profile_img = :profileImg, bio = :bio, email = :email, password = :password WHERE id = :id ");
+    $req = $db->prepare("UPDATE users SET username = :username, profile_img = :profileImg, bio = :bio, email = :email WHERE id = :id ");
     $req->execute([
         'id' => $id,
         'username' => $username,
         'profileImg' => $profileImg,
         'bio' => $bio,
-        'email' => $email,
-        'password' => $password
+        'email' => $email
     ]);
 }
 
@@ -266,4 +273,22 @@ function likePosts($get_user_id, $get_post_id)
         ]);
         return "like";
     }
+}
+
+function getPostDataById($id)
+{
+    $db = dbConnect();
+
+    $req = $db->prepare("SELECT 
+    p.id, p.captions, p.media_src, p.date_created, c.tag, u.username, u.profile_img
+    FROM posts p
+    INNER JOIN challenges c
+    ON p.challenge_id = c.id
+    INNER JOIN users u
+    ON p.user_id = u.id 
+    WHERE p.id = ?");
+
+    $req->execute([$id]);
+
+    return $req->fetch(PDO::FETCH_OBJ);
 }
