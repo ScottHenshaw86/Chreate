@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    ` <!-- User Profile -->`
+    <!-- User Profile -->
     <div class="user-profile">
         <a href="./index.php?action=viewProfile">
             <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
@@ -100,9 +100,9 @@
     <div class="searchModal">
         <div class="right-side">
             <!-- <span>&times;</span> -->
-            <div class="caption">Lorem Ipsum Mother Fucker</div>
+            <div class="caption">Search Mother Fucker!</div>
             <div id="searchInputAndResultsContainer">
-                <input type="text" id="userName" autocomplete="off">
+                <input type="text" id="userName" autocomplete="off" placeholder="username">
                 <div class="searchContainer"></div>
             </div>
         </div>
@@ -147,7 +147,7 @@
                     div.appendChild(a);
                     a.textContent = usernames[i];
                 }
-                div.style.display = "block";
+                div.style.display = "flex";
             });
 
             xhr.send(null);

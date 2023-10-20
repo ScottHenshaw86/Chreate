@@ -129,11 +129,19 @@ body{
     }
     .main .formContainer input{
         background: none;
-        border: 2px solid var(--second-main-color);
+        font-size: 1rem;
+        border: 2px solid var(--main-color);
         padding: .5rem;
         width: 100%;
         border-radius: 25px;
         color: var(--text-color);
+    }
+     ::placeholder{
+        color: var(--second-main-color);
+    }
+    #caption:focus {
+        filter: brightness(100%);
+        background: var(--main-color);
     }
     .main .formContainer input #media{
         background: var(--main-color);
@@ -176,3 +184,4 @@ body{
         box-shadow: none;
         color: var(--text-color);
     }
+    

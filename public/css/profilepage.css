@@ -133,6 +133,9 @@ a .edit-btn{
 .header-wrapper .cols-container .content ul li{
     font-size: 1.4rem;
 }
+.right-col{
+    margin-top: 3rem;
+}
 .header-wrapper .cols-container .right-col nav{
     display: flex;
     align-items: center;

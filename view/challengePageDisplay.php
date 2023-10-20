@@ -50,8 +50,8 @@
             <h3> Title: <?= $challenge->title ?></h3>
             <h3> Tag: <?= $challenge->tag ?></h3>
             <div class="btns">
-                <a href="#"> <button class="accept-btn">Challenge Accepted</button></a>
-                <a href="#"> <button class="decline-btn">Challenge Declined</button></a>
+                <a href="index.php?action=challengeAccepted"><button class="accept-btn">Challenge Accepted</button></a>
+                <a href="index.php?action=challengeDenied"><button class="decline-btn">Challenge Declined</button></a>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
 
     <!-- User Profile -->
     <div class="user-profile">
-        <a href="./index.php?action=profilePage">
+        <a href="./index.php?action=viewProfile">
             <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
             <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
         </a>
