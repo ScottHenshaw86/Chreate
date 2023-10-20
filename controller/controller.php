@@ -56,7 +56,7 @@ function createNewUser($username, $email, $password)
 function showExplorePage()
 {
     $posts = getPosts();
-    include "./view/components/explorePage.php";
+    include "./view/explorePage.php";
 }
 
 function showChallengePage()
@@ -274,8 +274,18 @@ function getAllPostData($id) {
     echo json_encode($data);
 }
 
+
 function insertComment($username, $text_content, $post_id) {
     $response = inserttComment($username, $text_content, $post_id);
     echo $response;
     print_r("$response");
+}
+
+function challengeAccepted(){
+     
+    include "./view/challengeAccepted.php";
+}
+
+function challengeDenied(){
+    include "./view/challengeDenied.php";
 }

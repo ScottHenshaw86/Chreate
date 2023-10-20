@@ -53,14 +53,14 @@
         <!-- </form> -->
     </div>
 
-    <!-- <div class="feedContainer">
+    <div class="feedContainer">
         <?php
         foreach ($posts as $post) {
             include "./view/components/postFeedDisplay.php";
         }
         ?>
 
-    </div> -->
+    </div>
 
     <script>
         const requestExplorePostData = () => {
@@ -142,12 +142,13 @@
 
         <!-- User Profile -->
         <div class="user-profile">
-            <a href="./index.php?action=profilePage">
+            <a href="./index.php?action=viewProfile">
                 <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
                 <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
             </a>
         </div>
     </div>
+    <?php include "./public/js/likePost.php"; ?>
 </body>
 
 </html>

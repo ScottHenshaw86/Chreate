@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- CSS link -->
-     <link rel="stylesheet" href="./public/css/newPostForm.css">
-    <!-- BOXICONS -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>New Post</title>
+    <title>Challenge Denied</title>
+    <!-- CSS link -->
+    <link rel="stylesheet" href="./public/css/challengeDenied.css">
+     <!-- BOXICONS -->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
-     <!-- NAVBAR -->
-     <a href="./index.php?action=challenge">
-        <button class="btn challenge-btn">Challenge of the Day</button>
-    </a>
+       <!-- NAVBAR -->
+     
 
-    <div class="navbar">
+       <div class="navbar">
         <div class="logo">
             <a href="./index.php?action=indexView.php"><img src="./public/images/logo2.png" alt="" /></a>
         </div>
@@ -43,34 +40,18 @@
         </a>
     </div>
 
-
-    <div class="main">
-        <div class="formContainer">
-            <form action="./index.php?action=createPost" method="post" enctype="multipart/form-data">
-                <input type="text" name="caption" id="caption" placeholder="Caption">
-
-                <!-- <label for="media">Media</label> -->
-
-                <input type="file" name="media" id="media" accept=".jpg,.jpeg,.png,.mp4,.mov " placeholder="Media">
-
-                <button type="submit" value="Upload Image/Video" name="submit" class="add-btn">Add</button>
-            </form>
-        </div>
+    <div class="container">
+        <h1>Pussy.</h1>
+        
     </div>
-
-
+</body>
 
 
     <!-- User Profile -->
     <div class="user-profile">
         <a href="./index.php?action=viewProfile">
         <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
-        <h4><?= htmlspecialchars($_SESSION['username']) ?></h4>
+        <h4><?= $_SESSION['username']; ?></h4>
         </a>
-    </div>
-
 </body>
-
 </html>
-
- 

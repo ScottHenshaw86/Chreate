@@ -74,6 +74,7 @@ body{
     font-size: 1.8rem;
     transition: var(--transition);
     cursor: pointer;
+    background: none;
   }
 .icons:hover{
     transform: scale(1.3);
@@ -101,7 +102,6 @@ body{
     box-shadow: none;
     color: var(--text-color);
 }
-
 .profile-photo img{
     width: 30px;
     height: 35px;
