@@ -11,7 +11,17 @@ function dbConnect()
     $USER = "root";
     $PWD = "root";
 
+    // $HOST = getenv("DB_HOST");
+    // $DB = getenv("DB_NAME");
+    // $USER = getenv("DB_USERNAME");
+    // $PWD = getenv("DB_PASSWORD");
+
+    // $options = array(
+    //     PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt",
+    //   );
+
     return new PDO("mysql:host=$HOST;dbname=$DB;charsetutf8", $USER, $PWD);
+    // return new PDO("mysql:host=$HOST;dbname=$DB;charsetutf8", $USER, $PWD, $options);
 }
 
 function checkSignin($usernameOrEmail, $password)

@@ -191,6 +191,13 @@ try {
             getAllPostData($id);
             break;
 
+        case "challengeAccepted":
+            challengeAccepted();
+            break;
+        case "challengeDenied":
+            challengeDenied();
+            break;
+
         default:
             showHomePage();
             break;

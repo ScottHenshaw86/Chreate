@@ -45,26 +45,26 @@
     </div>
 
     <div class="main">
-        <h1>Edit profile page</h1>
         <div class="formContainer">
+            <h1>Edit Profile</h1>
             <form action="index.php?action=editProfile" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" id="id" value="<?= $user->id ?>">
+                <input class="editInput" type="hidden" name="id" id="id" value="<?= $user->id ?>">
 
-                <input type="text" name="username" id="username" placeholder="username" value="<?= $user->username ?>">
+                <input class="editInput" type="text" name="username" id="username" placeholder="username" value="<?= $user->username ?>">
 
-                <input type="text" name="bio" id="bio" placeholder="bio" value="<?= $user->bio ?>">
+                <input class="editInput" type="text" name="bio" id="bio" placeholder="bio" value="<?= $user->bio ?>">
 
                 <!-- <input type="text" name="profileImg" id="profileImg" placeholder="profileImg" value="<?= $user->profile_img ?>"> -->
 
-                <input type="file" name="media" id="media" accept=".jpg,.jpeg,.png," placeholder="profileImg" value="<?= $user->profile_img ?>">
+                <input class="editInput" type="file" name="media" id="media" accept=".jpg,.jpeg,.png," placeholder="profileImg" value="<?= $user->profile_img ?>">
 
                 <!-- <button type="submit" value="Upload Image/Video" name="submit" class="add-btn">Add</button> -->
 
-                <input type="text" name="email" id="email" placeholder="email" value="<? $user->email ?>">
+               
 
                 <!-- <input type="text" name="password" id="password" placeholder="password" password value=""> -->
 
-                <button type="submit">Update</button>
+                <button class="update-btn" type="submit">Update</button>
             </form>
         </div>
     </div>

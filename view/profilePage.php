@@ -48,13 +48,6 @@
 
         <!-- RIGHT COLUMN -->
         <div class="right-col">
-          <nav>
-            <ul>
-              <li><a href="#">Photos</a></li>
-              <li><a href="#">Videos</a></li>
-              <button>Follow</button>
-            </ul>
-          </nav>
 
           <!-- PHOTOS -->
 
