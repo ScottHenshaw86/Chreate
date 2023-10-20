@@ -10,13 +10,11 @@ function showErrorPage($e)
     include "./view/errorPage.php";
 }
 
-
 function showHomePage()
 {
     $posts = getPosts();
     include "./view/indexView.php";
 }
-
 
 function showSignInForm()
 {
@@ -31,6 +29,8 @@ function getSignIn($usernameOrEmail, $password)
         $_SESSION['id'] = $user->id;
         $_SESSION['username'] = $user->username;
         $_SESSION['profilePic'] = $user->profile_img;
+
+        print_r("$user->id");
 
         header("Location: index.php?action=feed");
     } else {
@@ -264,6 +264,18 @@ function likePost($get_user_id, $get_post_id)
 
 function getAllPostData($id) {
     $postData = getPostDataById($id);
+    $comments = getCommentsByPostId($id);
 
-    echo json_encode($postData);
+    $data = [
+        "data" => $postData,
+        "comments" => $comments
+    ];
+
+    echo json_encode($data);
+}
+
+function insertComment($username, $text_content, $post_id) {
+    $response = inserttComment($username, $text_content, $post_id);
+    echo $response;
+    print_r("$response");
 }

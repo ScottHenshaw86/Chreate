@@ -12,7 +12,7 @@
         // STEP 2
         xhr.open("GET", "URL"); // TODO: add url
         // STEP 4
-        xhr.addEventListener("readystatechange", () => {    
+        xhr.addEventListener("readystatechange", () => {    serg
         if (xhr.readyState === 4 && xhr.status === 200) {
         const response = JSON.parse(xhr.response);
         // TODO: do somthing with the response

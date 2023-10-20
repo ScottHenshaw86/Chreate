@@ -7,7 +7,6 @@
             outline: 1px solid black;
             width: 60%;
             
-            
         }
 
         .input {
@@ -23,6 +22,7 @@
 
         .searchModal {
             display: none;
+            z-index: -1;
             position: fixed;
             top: 0;
             bottom: 0;

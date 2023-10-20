@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./public/css/searchModal.css">
     <link rel="stylesheet" href="./public/css/index_feed.css">
     <link rel="stylesheet" href="./public/css/searchBar.css">
+    <link rel="stylesheet" href="./public/css/comments.css">
 
     <!-- JS links -->
     <!-- <script defer src="./public/js/searchbar.js"></script> -->
@@ -113,6 +114,7 @@
 
         function openSearchModal() {
             searchModal.style.display = "flex";
+            searchModal.style.zIndex = 1;
         }
 
         function closeModal(e) {
@@ -120,6 +122,7 @@
             // console.log("CURRENT TARGET: ",e.currentTarget); // the element that has the event listener attached
             if (e.target === e.currentTarget) {
                 searchModal.style.display = "none";
+                searchModal.style.zIndex = -1;
             }
         }
 
@@ -135,7 +138,7 @@
             xhr.open('GET', `http://<?= getenv("LOCALHOST"); ?>/sites/Chreate/index.php?action=searchUser&userName=${userInput}`);
             xhr.addEventListener('load', () => {
                 const response = xhr.response;
-                console.log("RESPONSE", response);
+                // console.log("RESPONSE", response);
                 const usernames = response.split('||');
 
                 const div = document.querySelector('.searchContainer')
@@ -178,8 +181,17 @@
                     </div>
                     <div class="comment">
                         <!-- loop and display comments here -->
-                        <input type="text" name="comment" placeholder="Add a comment...">
-                        <button class="post-btn" type="submit">Post</button>
+                        <div class="wholeBox">
+
+                        </div>
+                        <div class="messagebox">
+                            <form action="index.php?action=insertComment" method=POST>
+                                <!-- <input class="userInput" type="text" id="user_id" name="user_id" placeholder="user_id"> -->
+                                <input type="hidden" name="post_id" id="post_id">
+                                <input class="msgInput" type="text" id="text_content" name="text_content" placeholder="message">
+                                <button class="button">SEND</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,8 +205,9 @@
             xhr.open("GET", `http://<?= getenv("LOCALHOST"); ?>/sites/Chreate/index.php?action=getAllPostDataById&id=${id}`);
             // Step 4
             xhr.addEventListener('load', function() {
+                console.log("Response: ", xhr.response);
                 const response = JSON.parse(xhr.response);
-                // console.log("RESPONSE:", response);
+                console.log("JSON RESPONSE:", response);
 
                 putDataIntoModal(response);
             });
@@ -214,9 +227,19 @@
             }
         });
 
-        function putDataIntoModal(data) {
+        function putDataIntoModal(response) {
+            const {
+                data,
+                comments
+            } = response; // protip: object destructuring
             // TODO: plug the data from the response into the modal HTML elements' textContent
             const modal = document.querySelector('.modal');
+
+            console.log(data);
+
+            document.getElementById("post_id").value = data.id;
+            // console.log("THIS ONEE" + data.id);
+
 
             modal.querySelector('.date').textContent = data.date_created;
             modal.querySelector('.caption').textContent = data.captions;
@@ -242,8 +265,62 @@
 
             postContent.appendChild(mediaDisplay);
 
+            // CREATE THE COMMENTS
+            // 1. querySelect the container that the comments will go into.
+            // 2. Loop through the comments
+            // 3. Create the HTML for a single comment
+            // 4. Append the comment to the container
 
+            const commentsContainer = modal.querySelector('.wholeBox');
+            commentsContainer.innerHTML = "";
 
+            comments.forEach(comment => {
+                console.log(comment);
+                // Create HTML for a single comment
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+
+                const commentInfo = document.createElement('div');
+                commentInfo.classList.add('comment-info');
+
+                //TODO make it put in img
+                //pfp
+                const commentPfp = document.createElement('img');
+                commentPfp.classList.add('comment-profile_img');
+                commentPfp.src = comment.profile_img;
+
+                //username
+                const commentUsername = document.createElement('p');
+                commentUsername.classList.add('comment-username');
+                commentUsername.textContent = comment.username;
+
+                //userid
+                // const commentAuthor = document.createElement('p');
+                // commentAuthor.classList.add('comment-author');
+                // commentAuthor.textContent = comment.author;
+                
+                // comment text
+                const commentText = document.createElement('p');
+                commentText.classList.add('comment-text');
+                commentText.textContent = comment.text_content;
+                
+                //date created
+                const commentDate = document.createElement('p');
+                commentDate.classList.add('comment-date');
+                commentDate.textContent = comment.date_created;
+
+                commentInfo.appendChild(commentPfp);
+                commentInfo.appendChild(commentUsername);
+                commentInfo.appendChild(commentDate);
+
+                commentElement.appendChild(commentInfo);
+                commentElement.appendChild(commentText);
+
+                // Append the comment to the container
+                commentsContainer.appendChild(commentElement);
+                console.log(commentsContainer);
+                
+            });
             // This should be last
             modal.style.display = 'flex';
         }
