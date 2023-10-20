@@ -174,7 +174,7 @@
                     </div>
                     <div class="caption"></div>
                     <div>
-                        <i class="bx bx-heart icons"></i>
+                        <i  class="bx bx-heart icons"></i>
                     </div>
                     <div class="comment">
                         <!-- loop and display comments here -->
@@ -194,6 +194,7 @@
             // Step 4
             xhr.addEventListener('load', function() {
                 const response = JSON.parse(xhr.response);
+                console.log(response);
                 // console.log("RESPONSE:", response);
 
                 putDataIntoModal(response);
@@ -203,18 +204,27 @@
             xhr.send(null);
         }
 
+        function closeModal() {
+            const modal = document.querySelector('.modal');
+                const videoElement = modal.querySelector('video');
+                if (videoElement) {
+                    videoElement.src = "";
+                }
+                modal.style.display = 'none';
+        }
         // Close the modal when clicking on the close button
-        document.querySelector('.modal span').onclick = () => {
-            document.querySelector('.modal').style.display = 'none';
-        };
+        document.querySelector('.modal span').onclick = closeModal;
         document.querySelector('.modal').addEventListener('click', (e) => {
             // console.log(e.target)
             if (e.currentTarget === e.target) {
-                document.querySelector('.modal').style.display = 'none';
+                closeModal();
             }
         });
 
+        
+
         function putDataIntoModal(data) {
+            
             // TODO: plug the data from the response into the modal HTML elements' textContent
             const modal = document.querySelector('.modal');
 
@@ -233,6 +243,9 @@
                 mediaDisplay = document.createElement('img');
             } else {
                 mediaDisplay = document.createElement("video");
+                mediaDisplay.controls = true;
+                mediaDisplay.autoplay = true;
+                mediaDisplay.muted = true;
             }
 
             mediaDisplay.src = data.media_src;
@@ -242,6 +255,17 @@
 
             postContent.appendChild(mediaDisplay);
 
+            const liked = modal.querySelector('.bx');
+            if (data.user_liked) {
+                liked.classList.remove('bx-heart');
+                liked.classList.add('bxs-heart')
+            } else {
+                liked.classList.add('bx-heart');
+                liked.classList.remove('bxs-heart')
+            }
+            liked.onclick = function() {
+                likePost(this, userId, data.id);
+            }
 
 
             // This should be last
@@ -249,6 +273,7 @@
         }
     </script>
 
+<?php include "./public/js/likePost.php"; ?>
 </body>
 
 </html>

@@ -62,14 +62,28 @@ function getPosts()
 {
     $db = dbConnect();
 
-    $response = $db->query("SELECT 
-                                p.id, p.captions, p.media_src, p.date_created, c.tag, u.username
+    $response = $db->prepare("SELECT 
+                                p.id, 
+                                p.captions, 
+                                p.media_src, 
+                                p.date_created, 
+                                c.tag, 
+                                u.username,
+                                CASE WHEN pl.user_id IS NOT NULL THEN true ELSE false END AS user_liked
                             FROM posts p
-                            INNER JOIN challenges c
-                            ON p.challenge_id = c.id
-                            INNER JOIN users u
-                            ON p.user_id = u.id ORDER BY date_created DESC
-                            ");
+                            INNER JOIN challenges c ON p.challenge_id = c.id
+                            INNER JOIN users u ON p.user_id = u.id
+                            LEFT JOIN post_likes pl ON p.id = pl.post_id AND pl.user_id = ?
+                            ORDER BY date_created DESC");
+    $response->execute([$_SESSION['id']]);
+    // $response = $db->query("SELECT 
+    //                             p.id, p.captions, p.media_src, p.date_created, c.tag, u.username
+    //                         FROM posts p
+    //                         INNER JOIN challenges c
+    //                         ON p.challenge_id = c.id
+    //                         INNER JOIN users u
+    //                         ON p.user_id = u.id ORDER BY date_created DESC
+    //                         ");
 
     $posts = $response->fetchAll(PDO::FETCH_OBJ);
 
@@ -290,15 +304,21 @@ function getPostDataById($id)
     $db = dbConnect();
 
     $req = $db->prepare("SELECT 
-    p.id, p.captions, p.media_src, p.date_created, c.tag, u.username, u.profile_img
-    FROM posts p
-    INNER JOIN challenges c
-    ON p.challenge_id = c.id
-    INNER JOIN users u
-    ON p.user_id = u.id 
-    WHERE p.id = ?");
+                            p.id, 
+                            p.captions, 
+                            p.media_src, 
+                            p.date_created, 
+                            c.tag, 
+                            u.username,
+                            CASE WHEN pl.user_id IS NOT NULL THEN true ELSE false END AS user_liked
+                        FROM posts p
+                        INNER JOIN challenges c ON p.challenge_id = c.id
+                        INNER JOIN users u ON p.user_id = u.id
+                        LEFT JOIN post_likes pl ON p.id = pl.post_id AND pl.user_id = ?
+                        WHERE p.id = ?
+                        ORDER BY date_created DESC");
 
-    $req->execute([$id]);
+    $req->execute([$_SESSION['id'], $id]);
 
     return $req->fetch(PDO::FETCH_OBJ);
 }

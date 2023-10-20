@@ -148,6 +148,7 @@
             </a>
         </div>
     </div>
+    <?php include "./public/js/likePost.php"; ?>
 </body>
 
 </html>
