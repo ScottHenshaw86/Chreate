@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    ` <!-- User Profile -->`
+    <!-- User Profile -->
     <div class="user-profile">
         <a href="./index.php?action=viewProfile">
             <img src="<?= $_SESSION['profilePic'] ?? './public/images/user/user1.webp' ?>" alt="">
