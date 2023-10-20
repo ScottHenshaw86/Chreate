@@ -191,6 +191,18 @@ try {
             getAllPostData($id);
             break;
 
+        case "insertComment":
+            $username = $_POST['user_id'] ?? false;
+            $text_content = $_POST['text_content'] ?? false;
+            $post_id = $_POST['post_id'] ?? false;
+            // insertComment($username, $text_content, $post_id);
+
+            print_r("$username");
+            print_r("$text_content");
+            print_r("$post_id");
+            break;
+
+
         case "challengeAccepted":
             challengeAccepted();
             break;

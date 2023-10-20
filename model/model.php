@@ -43,7 +43,6 @@ function checkSignin($usernameOrEmail, $password)
     }
 }
 
-
 function addNewUser($username, $email, $password)
 {
 
@@ -321,4 +320,34 @@ function getPostDataById($id)
     $req->execute([$_SESSION['id'], $id]);
 
     return $req->fetch(PDO::FETCH_OBJ);
+}
+
+function getCommentsByPostId($id)
+{
+    $db = dbConnect();
+
+    $req = $db->prepare("SELECT
+    c.id, c.user_id, c.post_id, c.text_content, c.date_created, u.username, u.profile_img
+    FROM comments c
+    INNER JOIN posts p
+    ON c.post_id = p.id
+    INNER JOIN users u
+    ON c.user_id = u.id
+    WHERE c.post_id = ?");
+
+    $req->execute([$id]);
+
+    return $req->fetchAll(PDO::FETCH_OBJ);
+}
+
+function inserttComment($username, $text_content, $post_id)
+{
+    $db = dbConnect();
+
+    $req = $db->prepare("INSERT INTO comments(user_id, text_content, post_id) VALUES (:username, :text_content, :post_id)");
+    $req->execute([
+        'user_id' => $username,
+        'text_content' => $text_content,
+        'post_id' => $post_id
+    ]);
 }

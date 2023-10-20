@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Poppins:wght@400;500&display=swap');
 
+.searchContainer {
+    display: none;
+    flex-direction: column-reverse;
+    position: absolute;
+    top: 23px;
+    background-color: white;
+    outline: 1px solid black;
+    width: 60%;
+
+}
+
 :root {
     --bg-color: #1f242d;
     --second-bg-color: #323946;
@@ -22,10 +33,12 @@
     border-radius: 25px;
     padding: 0.4rem;
 }
-.searchContainer a{
+
+.searchContainer a {
     color: var(--text-color);
 }
-.searchContainer a:hover{
+
+.searchContainer a:hover {
     background: var(--second-main-color);
     border-radius: 25px;
     height: 100%;
@@ -45,6 +58,7 @@
 .searchModal {
     display: none;
     position: fixed;
+    z-index: -1;
     top: 0;
     bottom: 0;
     left: 0;
@@ -60,7 +74,8 @@
     border-radius: 25px;
 
 }
- #userName{
+
+#userName {
     width: 100%;
     margin-top: 1.5rem;
     background: none;
@@ -70,15 +85,18 @@
     width: 100%;
     border-radius: 25px;
     color: var(--text-color);
-    
+
 }
-::placeholder{
+
+::placeholder {
     color: var(--second-main-color);
 }
+
 #userName:focus {
     filter: brightness(100%);
     background: var(--main-color);
 }
-#searchInputAndResultsContainer{
+
+#searchInputAndResultsContainer {
     width: 100%;
 }
