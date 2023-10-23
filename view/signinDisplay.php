@@ -12,6 +12,9 @@
   <script defer src="./public/js/toggleSignInUp.js"></script>
   <!-- ICONS link -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
+
 </head>
 
 <body>

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./public/css/challengeDenied.css">
      <!-- BOXICONS -->
      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
        <!-- NAVBAR -->
@@ -41,7 +43,7 @@
     </div>
 
     <div class="container">
-        <h1>Pussy.</h1>
+        <h3>Thank you for considering the challenge; I respect your decision.</h3>
         
     </div>
 </body>

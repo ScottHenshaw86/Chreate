@@ -31,7 +31,7 @@
         <div><img onclick="showModalForPost(<?= $post->id ?>)" src="<?= htmlspecialchars($post->media_src) ?>" class="postcontent"></div>
     <?php
     } else { ?>
-        <video width="600" height="400" autoplay muted onclick="showModalForPost(<?= $post->id ?>)">
+        <video loop autoplay muted onclick="showModalForPost(<?= $post->id ?>)">
             <source src="<?= ($post->media_src) ?>" type="video/<?= $extension ?>" class="postcontent">
         </video> <?php
                 }

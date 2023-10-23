@@ -130,6 +130,9 @@ try {
             showChallengePage();
             break;
 
+        case "getCurrentDays":
+            showCurrentDays();
+            break;    
 
         case "viewProfile":
             if (isset($_SESSION['id'])) {
