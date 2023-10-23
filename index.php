@@ -69,7 +69,6 @@ try {
                 throw new Exception("Please check that you are above 18");
             }
 
-
             $usernameValid = false;
             if (preg_match("/^[a-z0-9_\-]{6,20}$/i", $username)) {
                 $usernameValid = true;
@@ -130,7 +129,6 @@ try {
             showChallengePage();
             break;
 
-
         case "viewProfile":
             if (isset($_SESSION['id'])) {
                 showProfile();
@@ -144,17 +142,17 @@ try {
             break;
 
         case "editProfile":
-            $id = $_REQUEST['id'];
-            $username = $_REQUEST['username'];
-            // $profileImg = $_REQUEST['profileImg'];
-            $email = $_REQUEST['email'];
-            // $password = $_REQUEST['password'];
-            $bio = $_REQUEST['bio'];
-            $media_src = $_REQUEST['media'] ?? null;
-            // uploadpfp($media_src);   
+            $id = $_POST['id'];
+            $pfp = $_POST['pfp'];
+            $username = $_POST['username'];
+            $bio = $_POST['bio'];
 
-            editProfile($id, $username, $media_src, $bio, $email);
-            break;
+            // echo "<pre>";
+            // print_r($_POST);
+            // print_r($_FILES);
+            editProfile($id, $pfp, $username, $bio);
+
+            break;    
 
         case "logOut":
             logOut();
@@ -192,16 +190,15 @@ try {
             break;
 
         case "insertComment":
-            $username = $_POST['user_id'] ?? false;
+            $username = $_SESSION['id'];
             $text_content = $_POST['text_content'] ?? false;
             $post_id = $_POST['post_id'] ?? false;
-            // insertComment($username, $text_content, $post_id);
+            insertComment($username, $text_content, $post_id);
 
-            print_r("$username");
-            print_r("$text_content");
-            print_r("$post_id");
+            // print_r("$username");
+            // print_r("$text_content");
+            // print_r("$post_id");
             break;
-
 
         case "challengeAccepted":
             challengeAccepted();
@@ -217,3 +214,4 @@ try {
 } catch (Exception $e) {
     showErrorPage($e);
 }
+

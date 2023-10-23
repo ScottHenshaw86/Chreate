@@ -207,18 +207,19 @@ function getProfilePosts($user)
     return $posts;
 }
 
-function updateProfile($id, $username, $profileImg, $bio, $email)
+function updateProfile($id, $username, $profileImg, $bio)
 {
 
     $db = dbConnect();
-    $req = $db->prepare("UPDATE users SET username = :username, profile_img = :profileImg, bio = :bio, email = :email WHERE id = :id ");
+    $req = $db->prepare("UPDATE users SET username = :username, profile_img = :profileImg, bio = :bio WHERE id = :id ");
     $req->execute([
         'id' => $id,
         'username' => $username,
         'profileImg' => $profileImg,
-        'bio' => $bio,
-        'email' => $email
-    ]);
+        'bio' => $bio    ]);
+
+    $_SESSION['username'] = $username;
+    $_SESSION['profilePic'] = $profileImg;
 }
 
 function getUser($username) // first part for search up a user on homepage
@@ -344,10 +345,17 @@ function inserttComment($username, $text_content, $post_id)
 {
     $db = dbConnect();
 
-    $req = $db->prepare("INSERT INTO comments(user_id, text_content, post_id) VALUES (:username, :text_content, :post_id)");
+    $req = $db->prepare("INSERT INTO comments(user_id, text_content, post_id) VALUES (:user_id, :text_content, :post_id)");
     $req->execute([
         'user_id' => $username,
         'text_content' => $text_content,
         'post_id' => $post_id
     ]);
+
+    $commentsInserting = $db->lastInsertId();
+    echo "<br>newMsg: $commentsInserting";
+    header("Location: index.php?action=insertComment=$commentsInserting");
+
+    // return $commentsInserting;
+
 }

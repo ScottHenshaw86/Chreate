@@ -181,3 +181,7 @@ input {
   filter: brightness(100%);
   background: var(--main-color);
 }
+
+img {
+  width: 30%;
+}
