@@ -12,8 +12,14 @@
     />
     <!-- CSS link -->
     <link rel="stylesheet" href="public/css/profilepage.css" />
+    <link rel="stylesheet" href="./public/css/postFeedDisplay.css">
+
     <!-- JS link -->
     <script defer src="public/js/profilePage.js"></script>
+
+
+    <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
+
   </head>
   <body>
     <div class="header-wrapper">
@@ -37,12 +43,12 @@
             <p><?= $profile->bio ?></p>
 
             <!-- SOCIAL MEDIA -->
-            <ul>
+            <!-- <ul>
               <li><i class='bx bxl-instagram-alt'></i></li>
               <li><i class='bx bxl-twitter' ></i></li>
               <li><i class='bx bxl-tiktok'></i></li>
               <li><i class='bx bxl-facebook-circle' ></i></li>
-            </ul>
+            </ul> -->
           </div>
         </div>
 

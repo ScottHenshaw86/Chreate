@@ -93,23 +93,38 @@ function getChallenges()
 {
     $db = dbConnect();
 
-    $response = $db->query("SELECT id, title, description, tag, start_date, stop_date FROM challenges");
+    $response = $db->query("SELECT id, title, description, tag, start_date, stop_date FROM challenges WHERE NOW() BETWEEN start_date AND stop_date");
 
     $challenge = $response->fetch(PDO::FETCH_OBJ);
 
     return $challenge;
+}
+function getCurrentDayData()
+{
+    $db = dbConnect();
+
+    $response = $db->query("SELECT start_date, stop_date FROM challenges");
+
+    $getCurrentDays = $response->fetch(PDO::FETCH_OBJ);
+
+    return $getCurrentDays;
+    print_r($getCurrentDays);
 }
 
 function addNewPost($caption, $media_src)
 {
     $db = dbConnect();
 
+    $response = $db->query("SELECT id FROM challenges WHERE NOW() BETWEEN start_date AND stop_date");
+    $challenge_id = $response->fetch(PDO::FETCH_OBJ)->id;
 
-    $req = $db->prepare("INSERT INTO posts (user_id, captions, media_src, challenge_id, is_video, is_active) VALUES ( :user_id, :caption, :media_src, 1, 1, 1)");
+
+    $req = $db->prepare("INSERT INTO posts (user_id, captions, media_src, challenge_id, is_video, is_active) VALUES ( :user_id, :caption, :media_src, :challenge_id, 1, 1)");
     $req->execute([
         'user_id' => $_SESSION['id'],
         'caption' => $caption,
-        'media_src' => $media_src
+        'media_src' => $media_src,
+        'challenge_id' => $challenge_id
 
 
     ]);

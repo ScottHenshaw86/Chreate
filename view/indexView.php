@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="./public/css/index_feed.css">
     <link rel="stylesheet" href="./public/css/searchBar.css">
     <link rel="stylesheet" href="./public/css/comments.css">
+    <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
+
+
 
     <!-- JS links -->
     <!-- <script defer src="./public/js/searchbar.js"></script> -->
@@ -99,7 +102,7 @@
     <div class="searchModal">
         <div class="right-side">
             <!-- <span>&times;</span> -->
-            <div class="caption">Search Mother Fucker!</div>
+            <div class="caption">Search User</div>
             <div id="searchInputAndResultsContainer">
                 <input type="text" id="userName" autocomplete="off" placeholder="username">
                 <div class="searchContainer"></div>
@@ -170,7 +173,7 @@
                     <div class="postdetails">
                         <div class="useronpost"></div>
                         <div class="challengeData"></div>
-                        <div class="date"></div>
+                        <div class="date pb"></div>
                         <br>
                     </div>
                     <div class="caption"></div>

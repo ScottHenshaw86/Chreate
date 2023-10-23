@@ -177,14 +177,19 @@ a .edit-btn{
     grid-template-columns: repeat(auto-fill, minmax(190px,1fr));
 /*auto-fill instructs the browser to automatically generate as many columns as can fit in the available space while maintaining a minimum width of 190 pixels.
 minmax(190px, 1fr) defines the column size range. The column width can vary between a minimum of 190 pixels and a maximum of 1fr (1 fractional unit of available space).*/
-gap: 20px;
+gap: 60px 20px;
 }
-.header-wrapper .cols-container .right-col .photos img{
+.header-wrapper .cols-container .right-col .photos :is(img, video){
     max-width: 100%; /*makes sure that the images wont exceed the width of parent container, */
-    height: 100%;
+    height: calc(100% - 102px);
     display: block;
     object-fit: cover;
 }
+.header-wrapper .cols-container .right-col .photos video { 
+        /* padding-bottom: 4em; */
+}
+
+
 
 /* RESPONSIVNESS */
 

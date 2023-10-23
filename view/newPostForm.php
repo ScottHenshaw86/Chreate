@@ -8,6 +8,8 @@
      <link rel="stylesheet" href="./public/css/newPostForm.css">
     <!-- BOXICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
+
     <title>New Post</title>
 </head>
 

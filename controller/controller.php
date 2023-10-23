@@ -13,6 +13,8 @@ function showErrorPage($e)
 function showHomePage()
 {
     $posts = getPosts();
+    // echo"<pr/e>";
+    // print_r($posts);
     include "./view/indexView.php";
 }
 
@@ -64,6 +66,12 @@ function showChallengePage()
     $challenge = getChallenges();
     include  "./view/challengePageDisplay.php";
 }
+function showCurrentDays()
+{
+    $getCurrentDays = getCurrentDayData();
+    include "./view/challengeAccepted.php";
+}
+
 
 function showProfile()
 {
@@ -184,7 +192,7 @@ function uploadpfp($pfp)
      }
  
      // Check file size
-     if ($_FILES["media"]["size"] > 5000000) {
+     if ($_FILES["media"]["size"] > 10000000) {
          echo "Sorry, your file is too large.";
          $uploadOk = 0;
      }

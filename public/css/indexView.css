@@ -143,6 +143,6 @@ body{
   top: 30px;
   right: 50px;
  }
-
-
-
+ .post :is(img, video){
+  max-width: 500px; /*makes sure that the images wont exceed the width of parent container, */
+ }
