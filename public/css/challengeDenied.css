@@ -48,8 +48,7 @@ body {
     box-shadow: var(--box-shadow);
     overflow: hidden; 
 }
-h1{
-    font-size: 5rem;
+h3{
     color: var(--main-color);
 }
 #timer{

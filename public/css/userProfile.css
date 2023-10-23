@@ -20,6 +20,7 @@ body{
     background: var(--bg-color);
     color: var(--text-color);
 }
+
 ul{
     display: flex;
     align-items: center;
@@ -34,6 +35,9 @@ a{
     background: url(../images/profilepage/banner.jpg) no-repeat 50% 20% / cover;/*The image is positioned at 50% horizontally and doesn't repeat . The background size is set to 20% of the element's width, and the cover value is used to ensure the background image covers the entire element.*/
     width: 100%;
     min-height: calc(100px + 3vw); /* header's height will be 100px,*/
+}
+.left-col{
+    margin-left: 6rem;
 }
 .header-wrapper .cols-container .left-col{
     position: relative;
