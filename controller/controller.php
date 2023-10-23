@@ -91,10 +91,11 @@ function editProfileForm()
     include "./view/components/editProfileForm.php";
 }
 
-function editProfile($id, $username, $media_src, $bio, $email)
+function editProfile($id, $pfp, $username, $bio)
 {
-    $profileImg = uploadpfp($media_src); 
-    updateProfile($id, $username, $profileImg, $bio, $email);
+    $profileImg = uploadpfp($pfp);
+    updateProfile($id, $username, $profileImg, $bio);
+    
     header("Location: index.php?action=viewProfile");
 }
 
@@ -167,8 +168,13 @@ function createPost($caption, $media_src)
     header("Location: index.php?action=feed");
 }
 
-function uploadpfp($media_src)
+function uploadpfp($pfp)
 {
+    // If no new file uploaded, use the original file path ($pfp)
+
+    if (empty($_FILES["media"]["name"])) {
+        return $pfp;
+    }
      // VALIDATE AND UPLOAD THE FILE
 
      $target_dir = "./public/uploads/";
@@ -203,7 +209,12 @@ function uploadpfp($media_src)
      if ($uploadOk == 0) {
          echo "Sorry, your file was not uploaded.";
          // if everything is ok, try to upload file
-     } else {
+
+     } 
+
+
+     
+     else {
          if (move_uploaded_file($_FILES["media"]["tmp_name"], $target_file)) {
              echo "The file " . htmlspecialchars(basename($_FILES["media"]["name"])) . " has been uploaded.";
          } else {
