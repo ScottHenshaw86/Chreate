@@ -9,6 +9,9 @@
     <!-- CSS link -->
     <link rel="stylesheet" href="./public/css/challengeAccepted.css">
     <!-- JS link -->
+    <script>
+        const initialTime = "<?= $time ?>";
+    </script>
     <script defer src="./public/js/challengeAccepted.js"></script>
     <!-- BOXICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -49,6 +52,7 @@
     <div class="container">
         <h1>On ya mate!</h1>
         <div id="timer"></div>
+        <a href="./index.php?action=newPostForm"><button class="btn">Post Challenege</button></a>
     </div>
 </body>
 

@@ -301,7 +301,9 @@
                 //pfp
                 const commentPfp = document.createElement('img');
                 commentPfp.classList.add('comment-profile_img');
-                commentPfp.src = comment.profile_img;
+                const rand = Math.ceil(Math.random() * 5);
+                console.log("RAND:", rand);
+                commentPfp.src = comment.profile_img ?? `./public/images/user/user${rand}.webp`;
 
                 //username
                 const commentUsername = document.createElement('p');

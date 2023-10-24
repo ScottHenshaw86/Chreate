@@ -44,6 +44,9 @@
   left: 90%;
   color: var(--text-color);
 }
+.right-side{
+  padding: 2rem;
+}
 .caption{
   font-size: 1.2rem;
   margin-left: .5rem;
@@ -68,8 +71,20 @@
 .comment button{
   top: 0;
   right: 0;
-  height: 40px;
   border-radius: 10px;
+  background: var(--main-color);
+  color: var(--bg-color);
+  padding: .6rem 1.5rem;
+  box-shadow: var(--hover-box-shadow);
+  font-size: 1rem;
+  transition: var(--transition);
+  border: none;
+  margin-top: .8rem;
+  cursor: pointer;
+}
+.comment button:hover{
+  box-shadow: none;
+  color: var(--text-color);
 }
 .btn{
   background: var(--main-color);
@@ -105,4 +120,17 @@
 
 #searchInputAndResultsContainer {
   position: relative;
+}
+@media (max-width: 412px){
+  .post-content{
+    display: flex;
+    
+  }
+  .modal-inner img{
+    width: 100px;
+  }
+  .post-content .modal{
+    display: flex;
+    flex-direction: column;
+  }
 }

@@ -1,5 +1,5 @@
 .wholeBox {
-  height: 180px;
+  height: 150px;
   overflow-y: scroll;
 }
 
@@ -30,5 +30,6 @@
 
 form {
   display: flex;
+  
 }
   

@@ -205,7 +205,7 @@ function getProfilePosts($user)
     $db = dbConnect();
 
     $response = $db->prepare("SELECT 
-                                p.captions, p.media_src, p.date_created, c.tag, u.username
+                                p.id, p.captions, p.media_src, p.date_created, c.tag, u.username
                                 FROM posts p
                                 INNER JOIN challenges c
                                 ON p.challenge_id = c.id
@@ -380,4 +380,15 @@ function inserttComment($username, $text_content, $post_id)
 
     // return $commentsInserting;
 
+}
+
+
+function getStopTime() {
+    $db = dbConnect();
+
+    $response = $db->query("SELECT stop_date FROM challenges WHERE NOW() BETWEEN start_date AND stop_date");
+
+    $challenge = $response->fetch(PDO::FETCH_OBJ);
+
+    return $challenge->stop_date;
 }
