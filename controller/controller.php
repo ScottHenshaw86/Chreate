@@ -301,7 +301,8 @@ function insertComment($username, $text_content, $post_id) {
 }
 
 function challengeAccepted(){
-     
+     // 
+    $time = getStopTime();
     include "./view/challengeAccepted.php";
 }
 

@@ -68,7 +68,7 @@ body{
         bottom: 95%;
         font-size: .7rem;
       }
-    .icons {
+      .icons:not(.bx) {
         margin-bottom: 2.8rem; /* Adjust vertical spacing between icons */
         text-decoration: none;
         color: var(--text-color); /* Adjust icon color */

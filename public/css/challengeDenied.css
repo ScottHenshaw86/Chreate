@@ -102,7 +102,7 @@ h3{
     font-size: .7rem;
   }
   
-  .icons {
+  .icons:not(.bx) {
     margin-bottom: 2.8rem;
     /* Adjust vertical spacing between icons */
     text-decoration: none;
