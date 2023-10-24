@@ -258,10 +258,13 @@ function searchChallenge($challenge)
 
 }
 
-function selectPost($post)
+function selectPost($challengePost)
 {
-    $post = selectingPost($post);
-    print_r($post);
+    // echo "CHALLENGEpoST - controller: $challengePost <br>";
+    $posts = selectingPost($challengePost);
+    // echo "<pre>";
+    // print_r($post);
+    include "./view/explorePage.php";
 }
 
 

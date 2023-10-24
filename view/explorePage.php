@@ -50,9 +50,9 @@
 
     <div class="searchButton">
         <!-- <form action="index.php?action=searchingChallenges" method="POST"> -->
-        <input id="search" type="text" placeholder="Search Challenge" name="challenges">
+        <input id="search" type="text" placeholder="#Challenge Names" name="challenges">
         <div class="searchContainer"></div>
-        <!-- <input id="submit" type="submit" value="Search"> -->
+        <!-- <input type="text" id="userName" autocomplete="off" placeholder="username"> -->
         <!-- </form> -->
     </div>
 
@@ -84,10 +84,11 @@
                 div.innerHTML = "";
                 for (let i = 0; i < challenges.length; i++) {
                     const a = document.createElement('a');
-                    a.href = `index.php?action=challengePostSelect&post=${challenges[i]}`;
+                    a.href = `index.php?action=challengePostSelect&post=${encodeURIComponent(challenges[i])}`;
                     div.appendChild(a);
                     a.textContent = challenges[i];
                 }
+                div.style.display = "flex";
             });
 
             xhr.send(null);

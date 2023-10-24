@@ -178,8 +178,9 @@ try {
             break;
 
         case "challengePostSelect":
-            $challengePosts = $_GET["post"];
-            selectPost($post);
+            $challengePost = $_GET["post"];
+            // echo "CHALLENGEpoST - router: $challengePost <br>";
+            selectPost($challengePost);
             break;
 
         case "likePost":

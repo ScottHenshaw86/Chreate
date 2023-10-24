@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="./public/css/comments.css">
     <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
 
-
-
     <!-- JS links -->
     <!-- <script defer src="./public/js/searchbar.js"></script> -->
     <title>INDEX / HOME Page</title>
@@ -178,7 +176,7 @@
                     </div>
                     <div class="caption"></div>
                     <div>
-                        <i  class="bx bx-heart icons"></i>
+                        <i class="bx bx-heart icons"></i>
                     </div>
                     <div class="comment">
                         <!-- loop and display comments here -->
@@ -219,11 +217,11 @@
 
         function closeModal() {
             const modal = document.querySelector('.modal');
-                const videoElement = modal.querySelector('video');
-                if (videoElement) {
-                    videoElement.src = "";
-                }
-                modal.style.display = 'none';
+            const videoElement = modal.querySelector('video');
+            if (videoElement) {
+                videoElement.src = "";
+            }
+            modal.style.display = 'none';
         }
         // Close the modal when clicking on the close button
         document.querySelector('.modal span').onclick = closeModal;
@@ -314,12 +312,12 @@
                 // const commentAuthor = document.createElement('p');
                 // commentAuthor.classList.add('comment-author');
                 // commentAuthor.textContent = comment.author;
-                
+
                 // comment text
                 const commentText = document.createElement('p');
                 commentText.classList.add('comment-text');
                 commentText.textContent = comment.text_content;
-                
+
                 //date created
                 const commentDate = document.createElement('p');
                 commentDate.classList.add('comment-date');
@@ -335,14 +333,14 @@
                 // Append the comment to the container
                 commentsContainer.appendChild(commentElement);
                 console.log(commentsContainer);
-                
+
             });
             // This should be last
             modal.style.display = 'flex';
         }
     </script>
 
-<?php include "./public/js/likePost.php"; ?>
+    <?php include "./public/js/likePost.php"; ?>
 </body>
 
 </html>

@@ -272,14 +272,21 @@ function searchingChallenges($challenge)
     return $foundChallenge;
 }
 
-function selectingPost($post)
+function selectingPost($challengePost)
 {
+    // echo "CHALLENGEpoST - model: $challengePost <br>";
     $db = dbconnect();
 
-    $req = $db->prepare("SELECT * FROM posts where challenge_id = ?");
-    $req->execute([$post]);
+    $req = $db->prepare("SELECT c.id, c.tag, p.id, p.user_id, p.captions, p.media_src, p.date_created, u.username
+                        FROM posts p
+                        INNER JOIN challenges c
+                        ON p.challenge_id = c.id
+                        INNER JOIN users u 
+                        ON p.user_id = u.id
+                        WHERE c.tag = ?");
+    $req->execute([$challengePost]);
 
-    $selectedPost = $req->fetch(PDO::FETCH_OBJ);
+    $selectedPost = $req->fetchAll(PDO::FETCH_OBJ);
     return $selectedPost;
 }
 
