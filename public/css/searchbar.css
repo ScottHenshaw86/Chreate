@@ -26,10 +26,10 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 64px;
+    top: 112px;
     background-color: var(--main-color);
     outline: 1px solid black;
-    width: 100%;
+    width: 17%;
     border-radius: 25px;
     padding: 0.4rem;
 }
